@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 .Builder()
                 .images(new File(fileName))
                 .threshold(0.0001)
-                .classifierIds("sustentable")
+                .classifierIds("Clasificador")
                 .build();
 
         VisualClassification r2 = service.classify(options).execute();
@@ -241,11 +241,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     List<VisualClassifier.VisualClass> classes = classifiers.get(0).getClasses();
                     for (VisualClassifier.VisualClass items : classes) {
                         System.out.println("SCORE: " + items.getScore() + " NAME: " + items.getName());
-                        if (items.getName().equals("rec")) {
+                        if (items.getName().endsWith("_rec") && rec < items.getScore()) {
                             rec = items.getScore();
                         }
 
-                        if (items.getName().equals("norec")) {
+                        if (items.getName().endsWith("_norec") && noRec < items.getScore()) {
                             noRec = items.getScore();
                         }
                     }

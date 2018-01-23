@@ -9,8 +9,8 @@ android {
         applicationId "com.sustentate.app"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 6
-        versionName "0.9.7a"
+
+        versionName "0.9.8a"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "ibm_api_key", calculated_api_key
     }
