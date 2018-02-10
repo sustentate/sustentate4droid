@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         ClassifyImagesOptions options = new ClassifyImagesOptions
                 .Builder()
                 .images(new File(fileName))
-                .threshold(0.0001)
+                //.threshold(0.0001)
                 .classifierIds("Clasificador")
                 .build();
 
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                             noRec = items.getScore();
                         }
                     }
-                    return (rec - noRec) > 0.19;
+                    return rec > noRec;
                 }
             }
         }
