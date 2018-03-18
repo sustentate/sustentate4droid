@@ -6,6 +6,7 @@ package com.sustentate.app.models;
 
 public class ClassificationRequest {
     private String encodedImage;
+    private String userId;
 
     public String getEncodedImage() {
         return encodedImage;
@@ -13,5 +14,13 @@ public class ClassificationRequest {
 
     public void setEncodedImage(String encodedImage) {
         this.encodedImage = encodedImage;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

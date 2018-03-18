@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-def calculated_api_key = hasProperty('IbmApiKey') ? IbmApiKey : System.getenv("IbmApiKey")
-
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -11,7 +9,6 @@ android {
         targetSdkVersion 26
         versionName "0.9.9a"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        resValue "string", "ibm_api_key", calculated_api_key
         resValue "string", "server", "http://localhost:8080"
         versionCode 100
     }

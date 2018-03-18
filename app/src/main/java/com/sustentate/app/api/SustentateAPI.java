@@ -18,10 +18,6 @@ import retrofit2.http.Part;
 
 public interface SustentateAPI {
 
-    @Multipart
-    @POST("subirImagen")
-    Call<ResponseBody> upload(@Part("sustentate") RequestBody description, @Part MultipartBody.Part file);
-
     @POST("classification")
     Call<ClassificationResponse> classify(@Body ClassificationRequest request);
 

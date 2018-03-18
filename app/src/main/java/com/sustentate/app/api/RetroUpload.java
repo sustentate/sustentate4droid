@@ -29,29 +29,4 @@ public class RetroUpload {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
-    public void uploadImage(final ResultListener<String> resultListener, File file) {
-        resultListener.loading();
-
-        SustentateAPI sustentateAPI = postImage().create(SustentateAPI.class);
-
-        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
-
-        MultipartBody.Part body = MultipartBody.Part.createFormData("sustentable", "" + file, requestFile);
-
-        RequestBody description = RequestBody.create(okhttp3.MultipartBody.FORM, "sustentable");
-
-        Call<ResponseBody> call = sustentateAPI.upload(description, body);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                resultListener.finish(response.message());
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                resultListener.error(t);
-            }
-        });
-    }
 }
