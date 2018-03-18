@@ -33,6 +33,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Base64OutputStream;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
@@ -53,12 +55,19 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassific
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
 import com.sustentate.app.R;
+import com.sustentate.app.api.SustentateAPI;
+import com.sustentate.app.models.ClassificationRequest;
+import com.sustentate.app.models.ClassificationResponse;
 import com.sustentate.app.utils.Constants;
 import com.sustentate.app.utils.KeySaver;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -66,6 +75,10 @@ import java.util.Arrays;
 import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
@@ -188,7 +201,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            return isRecyclable();
+            try {
+                return isRecyclable();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
 
         @Override
@@ -219,10 +237,76 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         recycleRoot.animate().alpha(1).setDuration(500).setInterpolator(new DecelerateInterpolator()).start();
     }
 
-    private boolean isRecyclable() {
+    public String getStringFile(File f) {
+        InputStream inputStream = null;
+        String encodedFile= "", lastVal;
+        try {
+            inputStream = new FileInputStream(f.getAbsolutePath());
+
+            byte[] buffer = new byte[20240];//specify the size to allow
+            int bytesRead;
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                output64.write(buffer, 0, bytesRead);
+            }
+            output.flush();
+            output64.flush();
+            output64.close();
+            encodedFile =  output.toString();
+        }
+        catch (FileNotFoundException e1 ) {
+            e1.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        lastVal = encodedFile;
+        return lastVal;
+    }
+
+    private boolean isRecyclable() throws IOException {
         Bitmap bitmap = BitmapFactory.decodeFile(fileName);
+        long originalLen = bitmap.getByteCount();
+        bitmap = Bitmap.createScaledBitmap(bitmap, 600,600, false);
+        long destLen = bitmap.getByteCount();
+
+
+        InputStream inputStream = new FileInputStream(fileName);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        //String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+        byte[] buffer = new byte[2024000];//specify the size to allow
+        int bytesRead;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            output64.write(buffer, 0, bytesRead);
+        }
+        output64.close();
+        String encoded =  getStringFile(new File(fileName));
+
+
         storeImage(bitmapResize(bitmap, bitmap.getWidth() / 5, bitmap.getHeight() / 5));
-        VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                //.baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net/")
+                .baseUrl("http://10.0.2.2:8080")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        SustentateAPI api = retrofit.create(SustentateAPI.class);
+        ClassificationRequest request = new ClassificationRequest();
+        request.setEncodedImage(encoded);
+        Call<ClassificationResponse> responseCall = api.classify(request);
+
+        Response<ClassificationResponse> result = responseCall.execute();
+        return result.body().isCanBeRecycled();
+
+        /*VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
         service.setApiKey(getResources().getString(R.string.ibm_api_key));
 
         ClassifyImagesOptions options = new ClassifyImagesOptions
@@ -253,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 }
             }
         }
-        return false;
+        return false;*/
     }
 
     @Override
