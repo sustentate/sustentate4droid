@@ -268,28 +268,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     private boolean isRecyclable() throws IOException {
         Bitmap bitmap = BitmapFactory.decodeFile(fileName);
-        long originalLen = bitmap.getByteCount();
         bitmap = Bitmap.createScaledBitmap(bitmap, 600,600, false);
-        long destLen = bitmap.getByteCount();
 
-
-        InputStream inputStream = new FileInputStream(fileName);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        //String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-        byte[] buffer = new byte[2024000];//specify the size to allow
-        int bytesRead;
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
-
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
-            output64.write(buffer, 0, bytesRead);
-        }
-        output64.close();
         String encoded =  getStringFile(new File(fileName));
-
-
         storeImage(bitmapResize(bitmap, bitmap.getWidth() / 5, bitmap.getHeight() / 5));
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -305,39 +286,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
         Response<ClassificationResponse> result = responseCall.execute();
         return result.body().isCanBeRecycled();
-
-        /*VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
-        service.setApiKey(getResources().getString(R.string.ibm_api_key));
-
-        ClassifyImagesOptions options = new ClassifyImagesOptions
-                .Builder()
-                .images(new File(fileName))
-                //.threshold(0.0001)
-                .classifierIds("Clasificador")
-                .build();
-
-        VisualClassification r2 = service.classify(options).execute();
-        List<ImageClassification> classifications = r2.getImages();
-        if (classifications != null) {
-            if (classifications.size() > 0) {
-                List<VisualClassifier> classifiers = classifications.get(0).getClassifiers();
-                if (classifiers.size() > 0) {
-                    List<VisualClassifier.VisualClass> classes = classifiers.get(0).getClasses();
-                    for (VisualClassifier.VisualClass items : classes) {
-                        System.out.println("SCORE: " + items.getScore() + " NAME: " + items.getName());
-                        if (items.getName().endsWith("_rec") && rec < items.getScore()) {
-                            rec = items.getScore();
-                        }
-
-                        if (items.getName().endsWith("_norec") && noRec < items.getScore()) {
-                            noRec = items.getScore();
-                        }
-                    }
-                    return rec > noRec;
-                }
-            }
-        }
-        return false;*/
     }
 
     @Override
