@@ -5,13 +5,13 @@ package com.sustentate.app.models;
  */
 
 public class ClassificationResponse {
-    private boolean canBeRecycled;
+    private int recognitionResult;
 
-    public boolean isCanBeRecycled() {
-        return canBeRecycled;
+    public int getRecognitionResult() {
+        return recognitionResult;
     }
 
-    public void setCanBeRecycled(boolean canBeRecycled) {
-        this.canBeRecycled = canBeRecycled;
+    public void setRecognitionResult(int recognitionResult) {
+        this.recognitionResult = recognitionResult;
     }
 }

@@ -2,6 +2,7 @@ package com.sustentate.app.ui;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -73,6 +74,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
+
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import retrofit2.Call;
@@ -266,26 +269,45 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         return lastVal;
     }
 
+    private String getUserIdOrSetDefault() {
+        // Revisar la mejor manera de hacer esto
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.userpref), Context.MODE_PRIVATE);
+        String strUserId = prefs.getString(getString(R.string.userid), java.util.UUID.randomUUID().toString());
+
+        SharedPreferences.Editor editor =getSharedPreferences(getString(R.string.userpref), Context.MODE_PRIVATE).edit();
+        editor.putString(getString(R.string.userid), strUserId);
+        editor.apply();
+
+        return strUserId;
+    }
+
     private boolean isRecyclable() throws IOException {
         Bitmap bitmap = BitmapFactory.decodeFile(fileName);
-        bitmap = Bitmap.createScaledBitmap(bitmap, 600,600, false);
+        Double ratio = 1.0;
 
+        if (bitmap.getWidth() > bitmap.getHeight()) {
+            ratio = bitmap.getWidth() / 600.0;
+        } else {
+            ratio = bitmap.getHeight() / 600.0;
+        }
+
+        storeImage(bitmapResize(bitmap, (int) Math.round(bitmap.getWidth() / ratio) , (int) Math.round(bitmap.getHeight() / ratio)));
         String encoded =  getStringFile(new File(fileName));
-        storeImage(bitmapResize(bitmap, bitmap.getWidth() / 5, bitmap.getHeight() / 5));
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net/")
-                .baseUrl("http://10.0.2.2:8080")
+                .baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net/")
+                //.baseUrl("http://10.0.2.2:8080")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         SustentateAPI api = retrofit.create(SustentateAPI.class);
         ClassificationRequest request = new ClassificationRequest();
         request.setEncodedImage(encoded);
+        request.setUserId(getUserIdOrSetDefault());
         Call<ClassificationResponse> responseCall = api.classify(request);
 
         Response<ClassificationResponse> result = responseCall.execute();
-        return result.body().isCanBeRecycled();
+        return result.body().getRecognitionResult() == 1;
     }
 
     @Override
