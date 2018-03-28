@@ -16,7 +16,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="110dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp">
+        android:layout_marginRight="35dp"
+        android:id="@+id/relativeLayout">
 
         <TextView
             android:id="@+id/button_cam"
@@ -61,8 +62,9 @@
     <ImageView
         android:layout_width="220dp"
         android:layout_height="220dp"
+        android:layout_above="@+id/relativeLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="53dp"
         android:elevation="10dp"
         android:src="@drawable/logo_home" />
 

@@ -2,8 +2,10 @@ package com.sustentate.app.ui;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -32,35 +34,32 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         List<Fragment> fragments = new ArrayList<>();
-        HomeFragment homeFragment = new HomeFragment();
-        //FragmentEventos fragmentEventos = new FragmentEventos();
-        fragments.add(homeFragment);
         setContentView(R.layout.activity_home);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_Pager);
         FragmentPageAdapter adapterViewPager = new FragmentPageAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapterViewPager);
+        viewPager.setCurrentItem(1);
+        CustomTabLayout tabLayout = (CustomTabLayout) findViewById(R.id.tabs);
+        List<Drawable> listaIconos = new ArrayList<>();
+        listaIconos.add(getDrawable(R.drawable.logo_ecoeventos));
+        listaIconos.add(getDrawable(R.drawable.logo_recicla));
+        listaIconos.add(getDrawable(R.drawable.logo_tips));
+        for(int i=0;i<adapterViewPager.getCount();i++) {
+            tabLayout.addTab(tabLayout.newTab().setIcon(listaIconos.get(i)));
+        }
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
 
-        /* findViewById(R.id.button_cam).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, MainActivity.class));
-            }
-        });
+        Drawable logoEvento = getDrawable(R.drawable.logo_ecoeventos);
+        Drawable logoTip = getDrawable(R.drawable.logo_tips);
+        Drawable logoRecicla = getDrawable(R.drawable.logo_recicla);
 
-        findViewById(R.id.button_how).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                KeySaver.removeKey(HomeActivity.this, "sliding");
-                startActivity(new Intent(HomeActivity.this, SlideActivity.class));
-                finish();
-            }
-        });
 
-        ImageView homeBg = findViewById(R.id.home_bg);
-        Glide.with(this).load(R.drawable.bg_main).apply(RequestOptions.bitmapTransform(new BlurTransformation(130))).into(homeBg);
-    }*/
+
+
+
     }
 }
