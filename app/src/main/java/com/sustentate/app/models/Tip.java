@@ -9,13 +9,15 @@ public class Tip  {
     private String text;
     private String title;
     private String imageUrl;
+    private String getUrlToImage;
     private Integer date;
     private Integer id;
 
-    public Tip(String text, String title, String imageUrl, Integer date, Integer id) {
+    public Tip(String text, String title, String imageUrl, String getUrlToImage, Integer date, Integer id) {
         this.text = text;
         this.title = title;
         this.imageUrl = imageUrl;
+        this.getUrlToImage = getUrlToImage;
         this.date = date;
         this.id = id;
     }
@@ -30,6 +32,10 @@ public class Tip  {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getUrlToImage() {
+        return getUrlToImage;
     }
 
     public Integer getDate() {
