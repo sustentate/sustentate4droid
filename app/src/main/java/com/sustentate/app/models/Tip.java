@@ -1,5 +1,7 @@
 package com.sustentate.app.models;
 
+import java.util.Date;
+
 /**
  * Created by emzas on 27/3/2018.
  */
@@ -9,15 +11,13 @@ public class Tip  {
     private String text;
     private String title;
     private String imageUrl;
-    private String getUrlToImage;
-    private Integer date;
-    private Integer id;
+    private long date;
+    private long id;
 
-    public Tip(String text, String title, String imageUrl, String getUrlToImage, Integer date, Integer id) {
+    public Tip(String text, String title, String imageUrl, String getUrlToImage, long date, long id) {
         this.text = text;
         this.title = title;
         this.imageUrl = imageUrl;
-        this.getUrlToImage = getUrlToImage;
         this.date = date;
         this.id = id;
     }
@@ -34,15 +34,12 @@ public class Tip  {
         return imageUrl;
     }
 
-    public String getUrlToImage() {
-        return getUrlToImage;
-    }
 
-    public Integer getDate() {
+    public long getDate() {
         return date;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 }
