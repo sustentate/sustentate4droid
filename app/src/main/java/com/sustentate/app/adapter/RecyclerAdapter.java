@@ -22,8 +22,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private List<Tip> tips;
     private Context context;
 
-    public RecyclerAdapter(List<Tip> datos){
-        this.tips= datos;
+
+    public RecyclerAdapter(List<Tip> tips, Context context) {
+        this.tips = tips;
+        this.context = context;
     }
 
     @Override
@@ -70,10 +72,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public void cargarDatos(Tip tip){
 
-            if (tip != null && tip.getTitle() != null && tip.getUrlToImage() != null && !tip.getTitle().isEmpty() && !tip.getUrlToImage().isEmpty()) {
+            if (tip != null && tip.getTitle() != null && tip.getImageUrl() != null && !tip.getTitle().isEmpty() && !tip.getImageUrl().isEmpty()) {
                 title.setText(tip.getTitle());
                 //carga imagen por default si ausente
-                Picasso.with(context).load(tip.getUrlToImage()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
+                Picasso.with(context).load(tip.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
             }
             else {
                 title.setText("Unable to reach the article");

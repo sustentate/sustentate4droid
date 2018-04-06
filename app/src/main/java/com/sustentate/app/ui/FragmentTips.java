@@ -38,7 +38,7 @@ public class FragmentTips extends Fragment {
 
         tipList = new ArrayList<>();
 
-        adapter = new RecyclerAdapter(tipList);
+        adapter = new RecyclerAdapter(tipList, getContext());
 
         RecyclerView recyclerViewTips = (RecyclerView) view.findViewById(R.id.recyclerView_tips);
         recyclerViewTips.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
