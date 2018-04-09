@@ -12,7 +12,7 @@ public class Tip  {
     private long date;
     private long id;
 
-    public Tip(String text, String title, String imageUrl, long date, long id) {
+    public Tip() {
         this.text = text;
         this.title = title;
         this.imageUrl = imageUrl;
@@ -32,12 +32,31 @@ public class Tip  {
         return imageUrl;
     }
 
-
     public long getDate() {
         return date;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

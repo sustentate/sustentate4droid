@@ -1,8 +1,12 @@
 package com.sustentate.app.Controller;
 
+import android.content.Context;
+
+import com.sustentate.app.DAO.DAOTablaTips;
 import com.sustentate.app.DAO.DAOTipsDeInternet;
 import com.sustentate.app.api.ResultListener;
 import com.sustentate.app.models.Tip;
+import com.sustentate.app.utils.HTTPConnectionManager;
 
 import java.util.List;
 
@@ -12,27 +16,44 @@ import java.util.List;
 
 public class TipController {
 
-    public void obtenerTips(final ResultListener<List<Tip>> listenerFromView) {
+    public void obtenerTips( Context context, final ResultListener<List<Tip>> listenerFromView) {
 
-        DAOTipsDeInternet daoTipsDeInternet = new DAOTipsDeInternet();
-        daoTipsDeInternet.obtenerProductosDeInternet(new ResultListener<List<Tip>>() {
-            @Override
-            public void loading() {
+        final DAOTablaTips daoTablaTips = new DAOTablaTips(context);
 
-            }
+        if (hayInternet(context)){
 
-            @Override
-            public void finish(List<Tip> result) {
-                if (result != null){
-                    listenerFromView.finish(result);
+            DAOTipsDeInternet daoTipsDeInternet = new DAOTipsDeInternet();
+            daoTipsDeInternet.obtenerProductosDeInternet(new ResultListener<List<Tip>>() {
+                @Override
+                public void loading() {
+
                 }
-            }
 
-            @Override
-            public void error(Throwable error) {
+                @Override
+                public void finish(List<Tip> result) {
+                    if (result != null){
+                        daoTablaTips.insertarLosTips(result);
+                        listenerFromView.finish(result);
+                    }
+                }
 
-            }
-        });
+                @Override
+                public void error(Throwable error) {
+
+                }
+            });
+
+        } else{
+           List<Tip> tips = daoTablaTips.consultaDeTips();
+           listenerFromView.finish(tips);
+        }
+
 
     }
+
+    private Boolean hayInternet(Context context){
+        return HTTPConnectionManager.isNetworkingOnline(context);
+    }
+
+
 }

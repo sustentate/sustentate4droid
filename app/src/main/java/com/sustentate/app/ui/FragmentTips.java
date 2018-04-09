@@ -45,7 +45,7 @@ public class FragmentTips extends Fragment {
         recyclerViewTips.setAdapter(adapter);
 
         TipController tipController = new TipController();
-        tipController.obtenerTips(new ResultListener<List<Tip>>() {
+        tipController.obtenerTips(getContext() , new ResultListener<List<Tip>>() {
             @Override
             public void loading() {
 
@@ -63,12 +63,6 @@ public class FragmentTips extends Fragment {
 
             }
         });
-
-
-
-
-
-
 
         return view;
     }

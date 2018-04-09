@@ -2,12 +2,9 @@ package com.sustentate.app.DAO;
 
 import android.os.AsyncTask;
 
-import com.google.gson.Gson;
 import com.sustentate.app.api.ResultListener;
 import com.sustentate.app.api.SustentateAPI;
-import com.sustentate.app.models.ContenedoraTip;
 import com.sustentate.app.models.Tip;
-import com.sustentate.app.utils.HTTPConnectionManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,19 +57,6 @@ public class DAOTipsDeInternet {
                 return null;
             }
 
-/*
-            ContenedoraTip contenedora = null;
-            try {
-                HTTPConnectionManager connectionManager = new HTTPConnectionManager();
-                String leerElJsonDeInternet = connectionManager.getRequestString("https://sustentatemiddleware-generous-bonobo.mybluemix.net/ecotip?lastId=0");
-
-                Gson gson = new Gson();
-                contenedora = gson.fromJson(leerElJsonDeInternet, ContenedoraTip.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return contenedora != null ? contenedora.getListaTip() : null;*/
         }
 
 
