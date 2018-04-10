@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentTips extends Fragment {
+public class FragmentTips extends Fragment implements RecyclerAdapter.Comunicador {
 
     private List<Tip> tipList;
     private RecyclerAdapter adapter;
@@ -38,7 +38,7 @@ public class FragmentTips extends Fragment {
 
         tipList = new ArrayList<>();
 
-        adapter = new RecyclerAdapter(tipList, getContext());
+        adapter = new RecyclerAdapter(tipList, getContext(),this);
 
         RecyclerView recyclerViewTips = (RecyclerView) view.findViewById(R.id.recyclerView_tips);
         recyclerViewTips.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
@@ -66,5 +66,19 @@ public class FragmentTips extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void enviarInfo(Tip tip) {
+        Comunicador comunicador = (Comunicador) getContext();
+        //Le paso la información
+        comunicador.enviarInfo(tip);
+    }
+
+    public interface Comunicador{
+
+        public void enviarInfo(Tip tip);
+
+    }
+
 
 }
