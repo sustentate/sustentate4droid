@@ -7,8 +7,4 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
     android:visibility="visible">
-
-
-
-
 </android.support.design.widget.CoordinatorLayout>
