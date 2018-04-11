@@ -20,7 +20,10 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentViewPager extends Fragment {
-    List<Fragment> fragments = new ArrayList<>();
+
+    List<Fragment> fragments ;
+
+    FragmentPageAdapter adapterViewPager;
 
     public FragmentViewPager() {
         // Required empty public constructor
@@ -30,26 +33,32 @@ public class FragmentViewPager extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_view_pager,container,false);
 
-        ViewPager viewPager;
-        viewPager = (ViewPager) view.findViewById(R.id.view_Pager);
+        fragments = new ArrayList<>();
+
+        adapterViewPager = new FragmentPageAdapter(getFragmentManager(), fragments);
 
 
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentTips fragmentTips = new FragmentTips();
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_Pager);
 
-        fragments.add(homeFragment);
-        fragments.add(fragmentTips);
-
-
-
-        FragmentPageAdapter adapterViewPager = new FragmentPageAdapter(getFragmentManager(), fragments);
-
-
-        adapterViewPager.notifyDataSetChanged();
 
         viewPager.setAdapter(adapterViewPager);
+
+        if (adapterViewPager.getListaFragments().isEmpty()) {
+
+            List<Fragment> list = new ArrayList<>();
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentTips fragmentTips = new FragmentTips();
+
+            list.add(homeFragment);
+            list.add(fragmentTips);
+            FragmentPageAdapter adapterViewPager1 = new FragmentPageAdapter(getFragmentManager(), list);
+            adapterViewPager1.notifyDataSetChanged();
+            viewPager.setAdapter(adapterViewPager1);
+
+        }
 
         TabLayout tabLayout = view.findViewById(R.id.tabs);
         List<Drawable> listaIconos = new ArrayList<>();

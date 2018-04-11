@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.sustentate.app.ui.FragmentTips;
+import com.sustentate.app.ui.HomeFragment;
+
 import java.util.List;
 
 /**
@@ -11,10 +14,24 @@ import java.util.List;
  */
 public class FragmentPageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> listaFragments;
-    public FragmentPageAdapter(FragmentManager fm, List<Fragment> listaFragments) {
+
+    public FragmentPageAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
-        this.listaFragments = listaFragments;
+
+
+        listaFragments = fragments;
+
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentTips fragmentTips = new FragmentTips();
+
+        listaFragments.add(homeFragment);
+        listaFragments.add(fragmentTips);
+
+        notifyDataSetChanged();
+
     }
+
+
 
     public List<Fragment> getListaFragments() {
         return listaFragments;

@@ -27,13 +27,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textColor="@color/slide_three"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/textView_textDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textColor="@color/colorGrey"
+            android:padding="5dp"/>
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
