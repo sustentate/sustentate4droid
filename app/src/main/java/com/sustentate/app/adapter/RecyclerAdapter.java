@@ -21,11 +21,13 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private List<Tip> tips;
     private Context context;
+    private RecyclerAdapter.Comunicador comunicador;
 
 
-    public RecyclerAdapter(List<Tip> tips, Context context) {
+    public RecyclerAdapter(List<Tip> tips, Context context, RecyclerAdapter.Comunicador comunicador) {
         this.tips = tips;
         this.context = context;
+        this.comunicador = comunicador;
     }
 
     @Override
@@ -38,8 +40,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Tip tip = tips.get(position);
+
+        final Tip tip = tips.get(position);
         holder.cargarDatos(tip);
+
+        holder.celda.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                comunicador.enviarInfo(tip);
+            }
+        });
     }
 
     @Override
@@ -58,12 +69,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        private View celda;
         private TextView text;
         private TextView title;
         private ImageView imageUrl;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            celda = itemView;
             text = (TextView) itemView.findViewById(R.id.text_tip);
             title = (TextView) itemView.findViewById(R.id.title_tip);
             imageUrl = (ImageView) itemView.findViewById(R.id.image_tip);
@@ -83,5 +96,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 imageUrl.setImageResource(R.drawable.placeholder);
             }
         }
+    }
+    //Creo una interfaz para poder comunicarme con el adapter
+    public interface Comunicador{
+        //Creo un método para enviar la informacion
+        public void enviarInfo(Tip tip);
     }
 }

@@ -40,6 +40,7 @@ public class TipController {
                 @Override
                 public void error(Throwable error) {
 
+
                 }
             });
 
