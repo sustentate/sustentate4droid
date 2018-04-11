@@ -1,6 +1,7 @@
 package com.sustentate.app.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -40,23 +41,18 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
 
     @Override
     public void enviarInfo(Tip tip) {
+        Intent intent  = new Intent(this, DetalleActivity.class);
         Bundle bundle = new Bundle();
         //Pongo en el bundle la informacion
-        bundle.putString(FragmentDetalle.CLAVE_TIPIMAGE, tip.getImageUrl());
-        bundle.putString(FragmentDetalle.CLAVE_TIPTEXT, tip.getText());
-        bundle.putLong(FragmentDetalle.CLAVE_TIPDATE, tip.getDate());
-        bundle.putLong(FragmentDetalle.CLAVE_TIPID, tip.getId());
-        bundle.putString(FragmentDetalle.CLAVE_TIPTITLE, tip.getTitle());
+        bundle.putString(DetalleActivity.CLAVE_TIPIMAGE, tip.getImageUrl());
+        bundle.putString(DetalleActivity.CLAVE_TIPTEXT, tip.getText());
+        bundle.putLong(DetalleActivity.CLAVE_TIPDATE, tip.getDate());
+        bundle.putLong(DetalleActivity.CLAVE_TIPID, tip.getId());
+        bundle.putString(DetalleActivity.CLAVE_TIPTITLE, tip.getTitle());
 
+        intent.putExtras(bundle);
 
-        FragmentDetalle fragmentDetalle = new FragmentDetalle();
+        startActivity(intent);
 
-        fragmentDetalle.setArguments(bundle);
-
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.home_activity,fragmentDetalle)
-                .addToBackStack(null)
-                .commit();
     }
 }
