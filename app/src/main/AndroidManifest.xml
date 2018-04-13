@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera2.full" />
 
@@ -23,12 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.HomeActivity"
-            android:screenOrientation="portrait"/>
-        <meta-data android:name="com.sustentate.app.utils.GlideConfiguration"
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.sustentate.app.utils.GlideConfiguration"
             android:value="GlideModule" />
+
+        <activity android:name=".ui.DetalleActivity"></activity>
     </application>
 
 </manifest>

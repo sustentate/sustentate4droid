@@ -83,6 +83,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.sustentate.app.R.id.recycle_icon;
+
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     private static final int PERMISSION_CAMERA_SD = 3030;
@@ -121,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private View recycleBackground;
     private TextView recycleContinue;
     private TextView recycleSubtitle;
+    private ImageView recycleImage;
 
     private double noRec;
     private double rec;
@@ -170,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         recycleBackground = recycleRoot.findViewById(R.id.recycle_bg);
         recycleContinue = recycleRoot.findViewById(R.id.button_continue);
         recycleSubtitle = recycleRoot.findViewById(R.id.recycle_subtitle);
+        recycleImage = recycleRoot.findViewById(R.id.recycle_icon);
 
         recycleContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,13 +233,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (result) {
             recycleTitle.setText("RECICLABLE");
             recycleSubtitle.setText("Por favor, asegurate que esté limpio y seco antes de depositarlo en el cesto de color verde.");
-            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
             recycleContinue.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            recycleImage.setImageResource(R.drawable.recycle);
         } else {
             recycleTitle.setText("NO RECICLABLE");
             recycleSubtitle.setText("Por favor, depositalo en el cesto de color negro.");
-            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
-            recycleContinue.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGrey));
+            recycleContinue.setTextColor(ContextCompat.getColor(this, R.color.colorGrey));
+            recycleImage.setImageResource(R.drawable.tacho);
         }
         recycleRoot.animate().alpha(1).setDuration(500).setInterpolator(new DecelerateInterpolator()).start();
     }
