@@ -50,11 +50,6 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
 import com.sustentate.app.R;
 import com.sustentate.app.api.SustentateAPI;
 import com.sustentate.app.models.ClassificationRequest;
@@ -74,7 +69,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -82,8 +76,6 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.sustentate.app.R.id.recycle_icon;
 
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
