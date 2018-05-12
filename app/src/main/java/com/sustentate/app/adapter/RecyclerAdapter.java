@@ -58,10 +58,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return tips.size();
     }
 
-    public Tip getItem(Integer posicion){
-        return tips.get(posicion);
-    }
-
     public void cargarNuevaLista(List<Tip> tips1){
         tips.addAll(tips1);
         notifyDataSetChanged();

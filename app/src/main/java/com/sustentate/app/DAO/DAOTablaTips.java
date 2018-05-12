@@ -60,8 +60,6 @@ public class DAOTablaTips extends DatabaseHelper{
             } else {
                 insertarDatosEnTabla(tip);
             }
-
-
         }
     }
 
