@@ -1,4 +1,4 @@
-package com.sustentate.app.utils;
+package ar.com.sustentate.com.utils;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;

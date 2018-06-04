@@ -1,7 +1,7 @@
-package com.sustentate.app.api;
+package ar.com.sustentate.com.api;
 
-import com.sustentate.app.utils.Constants;
 
+import ar.com.sustentate.com.utils.Constants;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

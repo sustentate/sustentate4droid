@@ -1,13 +1,14 @@
-package com.sustentate.app.adapter;
+package ar.com.sustentate.com.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.sustentate.app.ui.FragmentTips;
-import com.sustentate.app.ui.HomeFragment;
-
 import java.util.List;
+
+import ar.com.sustentate.com.ui.FragmentEvento;
+import ar.com.sustentate.com.ui.FragmentTips;
+import ar.com.sustentate.com.ui.HomeFragment;
 
 /**
  * Created by emzas on 25/3/2018.
@@ -21,9 +22,11 @@ public class FragmentPageAdapter extends FragmentStatePagerAdapter {
 
         listaFragments = fragments;
 
+        FragmentEvento fragmentEvento = new FragmentEvento();
         HomeFragment homeFragment = new HomeFragment();
         FragmentTips fragmentTips = new FragmentTips();
 
+        listaFragments.add(fragmentEvento);
         listaFragments.add(homeFragment);
         listaFragments.add(fragmentTips);
 

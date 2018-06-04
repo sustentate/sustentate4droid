@@ -1,4 +1,4 @@
-package com.sustentate.app.adapter;
+package ar.com.sustentate.com.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
-import com.sustentate.app.R;
-import com.sustentate.app.models.Tip;
-
 import java.util.List;
+
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.models.Tip;
 
 /**
  * Created by emzas on 28/3/2018.

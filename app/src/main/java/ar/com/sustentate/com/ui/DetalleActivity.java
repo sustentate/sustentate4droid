@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.sustentate.app.R;
+
+import ar.com.sustentate.com.R;
 
 public class DetalleActivity extends AppCompatActivity {
 

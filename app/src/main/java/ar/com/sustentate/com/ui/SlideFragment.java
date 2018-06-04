@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.sustentate.app.R;
 
+import ar.com.sustentate.com.R;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /*

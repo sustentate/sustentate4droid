@@ -1,4 +1,4 @@
-package com.sustentate.app.utils;
+package ar.com.sustentate.com.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
-import com.sustentate.app.SustentateApplication;
-
 import java.util.Map;
+
+import ar.com.sustentate.com.SustentateApplication;
 
 public class KeySaver {
 

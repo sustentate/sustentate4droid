@@ -1,14 +1,14 @@
-package com.sustentate.app.Controller;
+package ar.com.sustentate.com.Controller;
 
 import android.content.Context;
 
-import com.sustentate.app.DAO.DAOTablaTips;
-import com.sustentate.app.DAO.DAOTipsDeInternet;
-import com.sustentate.app.api.ResultListener;
-import com.sustentate.app.models.Tip;
-import com.sustentate.app.utils.HTTPConnectionManager;
-
 import java.util.List;
+
+import ar.com.sustentate.com.DAO.DAOTablaTips;
+import ar.com.sustentate.com.DAO.DAOTipsDeInternet;
+import ar.com.sustentate.com.api.ResultListener;
+import ar.com.sustentate.com.models.Tip;
+import ar.com.sustentate.com.utils.HTTPConnectionManager;
 
 /**
  * Created by emzas on 28/3/2018.
@@ -48,7 +48,6 @@ public class TipController {
            List<Tip> tips = daoTablaTips.consultaDeTips();
            listenerFromView.finish(tips);
         }
-
 
     }
 

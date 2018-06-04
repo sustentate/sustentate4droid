@@ -1,6 +1,6 @@
-package com.sustentate.app.models;
+package ar.com.sustentate.com.models;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 /**
  * Created by emzas on 27/3/2018.
@@ -8,31 +8,34 @@ import java.util.Date;
 
 public class Evento {
 
+
     private String title;
     private String text;
-    private String urlImagen;
+    private String imageUrl;
     private String place;
-    private Date date;
-    private Date dateEnd;
+    private long date;
+    private long dateEnd;
     private long id;
 
 
     public Evento() {
         this.title = title;
         this.text = text;
-        this.urlImagen = urlImagen;
+        this.imageUrl = imageUrl;
         this.place = place;
         this.date = date;
         this.dateEnd = dateEnd;
         this.id = id;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
+    public DateTime getRealDate(){ return DateTime.parse(String.valueOf(date));}
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public long getId() {
@@ -47,29 +50,31 @@ public class Evento {
         return title;
     }
 
-    public Date getDateEnd() {
-        return dateEnd;
-    }
+    public long getDateEnd() { return dateEnd;}
+
+    public DateTime getRealDateEnd(){return DateTime.parse(String.valueOf(dateEnd));}
 
     public String getPlace() {
         return place;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(long dateEnd) {
         this.dateEnd = dateEnd;
     }
+
+    public void setRealDateEnd(DateTime date) {date = DateTime.parse(String.valueOf(dateEnd));}
 
     public void setPlace(String place) {
         this.place = place;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    public void setDate(long date) {this.date = date;}
+
+    public void setRealDate(DateTime date) {date = DateTime.parse(String.valueOf(date));}
 
     public void setId(long id) {
         this.id = id;

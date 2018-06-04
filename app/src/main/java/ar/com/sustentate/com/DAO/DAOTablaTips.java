@@ -1,14 +1,14 @@
-package com.sustentate.app.DAO;
+package ar.com.sustentate.com.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.sustentate.app.models.Tip;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.com.sustentate.com.models.Tip;
 
 /**
  * Created by emzas on 8/4/2018.

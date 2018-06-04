@@ -1,14 +1,13 @@
-package com.sustentate.app.DAO;
+package ar.com.sustentate.com.DAO;
 
 import android.os.AsyncTask;
-
-import com.sustentate.app.api.ResultListener;
-import com.sustentate.app.api.SustentateAPI;
-import com.sustentate.app.models.Tip;
 
 import java.io.IOException;
 import java.util.List;
 
+import ar.com.sustentate.com.api.ResultListener;
+import ar.com.sustentate.com.api.SustentateAPI;
+import ar.com.sustentate.com.models.Tip;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;

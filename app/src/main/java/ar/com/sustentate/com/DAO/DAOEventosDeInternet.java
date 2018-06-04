@@ -1,14 +1,13 @@
-package com.sustentate.app.DAO;
+package ar.com.sustentate.com.DAO;
 
 import android.os.AsyncTask;
-
-import com.sustentate.app.api.ResultListener;
-import com.sustentate.app.api.SustentateAPI;
-import com.sustentate.app.models.Evento;
 
 import java.io.IOException;
 import java.util.List;
 
+import ar.com.sustentate.com.api.ResultListener;
+import ar.com.sustentate.com.api.SustentateAPI;
+import ar.com.sustentate.com.models.Evento;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -19,6 +18,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class DAOEventosDeInternet {
+
+    public void obtenerEventosDeInternet(ResultListener<List<Evento>> listenerFromController){
+        ObtenerListaEventosDeInternet tarea = new ObtenerListaEventosDeInternet(listenerFromController);
+        tarea.execute();
+    }
+
 
     private class ObtenerListaEventosDeInternet extends AsyncTask<String, Void, List<Evento>> {
 
@@ -32,12 +37,12 @@ public class DAOEventosDeInternet {
         protected List<Evento> doInBackground(String... strings) {
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("")
+                    .baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
             SustentateAPI api = retrofit.create(SustentateAPI.class);
-            Call<List<Evento>> call = api.getEvetos(0);
+            Call<List<Evento>> call = api.getEventos(0);
             try {
                 Response<List<Evento>> response = call.execute();
                 List<Evento> eventos = response.body();

@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 
 import android.content.Intent;
@@ -9,14 +9,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
-import com.sustentate.app.R;
-import com.sustentate.app.models.Tip;
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.models.Evento;
+import ar.com.sustentate.com.models.Tip;
 
 /*
  * Created by mzorilla on 11/4/17.
  */
 
-public class HomeActivity extends AppCompatActivity implements FragmentTips.Comunicador {
+public class HomeActivity extends AppCompatActivity implements FragmentTips.Comunicador, FragmentEvento.Comunicador {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,5 +55,22 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
 
         startActivity(intent);
 
+    }
+
+    @Override
+    public void enviarInfo(Evento evento) {
+        Intent intent = new Intent(this, ActivityEvento.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable(ActivityEvento.DATE, evento.getDate());
+        bundle.putSerializable(ActivityEvento.DATE_END, evento.getDateEnd());
+        bundle.putString(ActivityEvento.PLACE, evento.getPlace());
+        bundle.putString(ActivityEvento.TEXT, evento.getText());
+        bundle.putString(ActivityEvento.TITLE, evento.getTitle());
+        bundle.putString(ActivityEvento.URL_EVENTO, evento.getImageUrl());
+        bundle.putLong(ActivityEvento.ID, evento.getId());
+
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

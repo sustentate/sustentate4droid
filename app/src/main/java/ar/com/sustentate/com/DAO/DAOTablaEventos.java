@@ -1,17 +1,14 @@
-package com.sustentate.app.DAO;
+package ar.com.sustentate.com.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.sustentate.app.models.Evento;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import ar.com.sustentate.com.models.Evento;
 
 /**
  * Created by emzas on 12/5/2018.
@@ -44,7 +41,7 @@ public class DAOTablaEventos extends DatabaseHelper {
             row.put(ID , evento.getId());
             row.put(TITLE, evento.getTitle());
             row.put(TEXT, evento.getText());
-            row.put(URL_EVENTO, evento.getUrlImagen());
+            row.put(URL_EVENTO, evento.getImageUrl());
             row.put(DATE, String.valueOf(evento.getDate()));
             row.put(DATE_END, String.valueOf(evento.getDate()));
             row.put(PLACE, String.valueOf(evento.getDateEnd()));
@@ -54,7 +51,7 @@ public class DAOTablaEventos extends DatabaseHelper {
         }
     }
 
-    public void insertarLosTips(List<Evento> eventos){
+    public void insertarLosEventos(List<Evento> eventos){
         for (Evento evento : eventos){
             if(evento.equals(null)){
 
@@ -89,22 +86,14 @@ public class DAOTablaEventos extends DatabaseHelper {
             endDate = cursor.getString(cursor.getColumnIndex(DATE_END));
             place = cursor.getString(cursor.getColumnIndex(PLACE));
 
-            SimpleDateFormat simple1 = new SimpleDateFormat("dd-MMM-yyyy");
-            SimpleDateFormat simple2 = new SimpleDateFormat("dd-MMM-yyyy");
 
-            try {
-                Date date1 = simple1.parse(date);
-                Date date2 = simple2.parse(endDate);
-                evento.setDate(date1);
-                evento.setDateEnd(date2);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            evento.setDate(Long.parseLong(date));
+            evento.setDateEnd(Long.parseLong(endDate));
             evento.setId(Long.parseLong(id));
             evento.setPlace(place);
             evento.setText(text);
             evento.setTitle(title);
-            evento.setUrlImagen(urlEvento);
+            evento.setImageUrl(urlEvento);
             eventos.add(evento);
         }
 

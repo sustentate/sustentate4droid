@@ -1,4 +1,4 @@
-package com.sustentate.app.utils;
+package ar.com.sustentate.com.utils;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.sustentate.app.R;
+import ar.com.sustentate.com.R;
+
 
 /*
  * Created by mzorilla on 11/8/17.

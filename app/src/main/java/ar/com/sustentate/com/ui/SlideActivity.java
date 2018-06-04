@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.sustentate.app.R;
-import com.sustentate.app.adapter.SlideAdapter;
-import com.sustentate.app.utils.KeySaver;
-import com.sustentate.app.utils.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.adapter.SlideAdapter;
+import ar.com.sustentate.com.utils.KeySaver;
+import ar.com.sustentate.com.utils.Utils;
 
 /*
  * Created by mzorilla on 11/5/17.

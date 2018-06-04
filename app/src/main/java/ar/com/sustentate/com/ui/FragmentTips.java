@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 
 import android.os.Bundle;
@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sustentate.app.Controller.TipController;
-import com.sustentate.app.R;
-import com.sustentate.app.adapter.RecyclerAdapter;
-import com.sustentate.app.api.ResultListener;
-import com.sustentate.app.models.Tip;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.com.sustentate.com.Controller.TipController;
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.adapter.RecyclerAdapter;
+import ar.com.sustentate.com.api.ResultListener;
+import ar.com.sustentate.com.models.Tip;
 
 /**
  * A simple {@link Fragment} subclass.

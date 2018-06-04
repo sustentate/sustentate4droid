@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 import android.Manifest;
 import android.content.Context;
@@ -26,6 +26,7 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -33,7 +34,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Size;
@@ -50,12 +50,6 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
-import com.sustentate.app.R;
-import com.sustentate.app.api.SustentateAPI;
-import com.sustentate.app.models.ClassificationRequest;
-import com.sustentate.app.models.ClassificationResponse;
-import com.sustentate.app.utils.Constants;
-import com.sustentate.app.utils.KeySaver;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -70,6 +64,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.api.SustentateAPI;
+import ar.com.sustentate.com.models.ClassificationRequest;
+import ar.com.sustentate.com.models.ClassificationResponse;
+import ar.com.sustentate.com.utils.Constants;
+import ar.com.sustentate.com.utils.KeySaver;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import retrofit2.Call;
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (result) {
             recycleTitle.setText("RECICLABLE");
             recycleSubtitle.setText("Por favor, asegurate que esté limpio y seco antes de depositarlo en el cesto de color verde.");
-            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
+            recycleBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
             recycleContinue.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
             recycleImage.setImageResource(R.drawable.recycle);
         } else {

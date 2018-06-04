@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sustentate.app.ui.FragmentViewPager">
+    tools:context="ar.com.sustentate.com.ui.FragmentViewPager">
 
 
-    <com.sustentate.app.ui.CustomTabLayout
+    <ar.com.sustentate.com.ui.CustomTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.sustentate.app.adapter;
+package ar.com.sustentate.com.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.sustentate.app.R;
-import com.sustentate.app.models.Evento;
 
 import java.util.List;
+
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.models.Evento;
 
 /**
  * Created by emzas on 18/3/2018.
@@ -72,14 +73,13 @@ public class EventosAdapter extends RecyclerView.Adapter {
         }
 
         public void cargarDatos (Evento evento){
-            if (evento != null && evento.getTitle() != null && evento.getUrlImagen() != null && !evento.getTitle().isEmpty() && !evento.getUrlImagen().isEmpty()) {
+            if (evento != null && evento.getTitle() != null && evento.getImageUrl() != null && !evento.getTitle().isEmpty() && !evento.getImageUrl().isEmpty()) {
                 title.setText(evento.getTitle());
                 //carga imagen por default si ausente
-                Picasso.with(context).load(evento.getUrlImagen()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
+                Picasso.with(context).load(evento.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
             }
             else {
                 title.setText("Unable to reach the article");
-                //Picasso.with(context).load(articulo.getUrlToImage()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageViewRecycler);
                 imageUrl.setImageResource(R.drawable.placeholder);
             }
         }

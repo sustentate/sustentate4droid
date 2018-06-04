@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/camera_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,18 +10,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.sustentate.app.utils.AspectRelative
+        <ar.com.sustentate.com.utils.AspectRelative
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/black">
 
-            <com.sustentate.app.utils.CameraView
+            <ar.com.sustentate.com.utils.CameraView
                 android:id="@+id/camera_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true" />
 
-            <com.sustentate.app.utils.AspectImageView
+            <ar.com.sustentate.com.utils.AspectImageView
                 android:id="@+id/camera_preview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -49,7 +50,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-        </com.sustentate.app.utils.AspectRelative>
+        </ar.com.sustentate.com.utils.AspectRelative>
 
         <RelativeLayout
             android:layout_width="match_parent"

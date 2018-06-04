@@ -1,4 +1,4 @@
-package com.sustentate.app.adapter;
+package ar.com.sustentate.com.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

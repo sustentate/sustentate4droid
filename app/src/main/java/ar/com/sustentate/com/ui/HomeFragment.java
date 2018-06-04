@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 
 import android.app.Activity;
@@ -12,9 +12,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.sustentate.app.R;
-import com.sustentate.app.utils.KeySaver;
 
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.utils.KeySaver;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
@@ -40,6 +40,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(fragmentView.getContext(), MainActivity.class));
+            }
+        });
+
+        fragmentView.findViewById(R.id.button_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(fragmentView.getContext(), SearchActivity.class));
             }
         });
 

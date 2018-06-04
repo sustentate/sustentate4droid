@@ -1,12 +1,12 @@
-package com.sustentate.app.api;
+package ar.com.sustentate.com.api;
 
-import com.sustentate.app.models.ClassificationRequest;
-import com.sustentate.app.models.ClassificationResponse;
-import com.sustentate.app.models.Evento;
-import com.sustentate.app.models.Tip;
 
 import java.util.List;
 
+import ar.com.sustentate.com.models.ClassificationRequest;
+import ar.com.sustentate.com.models.ClassificationResponse;
+import ar.com.sustentate.com.models.Evento;
+import ar.com.sustentate.com.models.Tip;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -26,6 +26,6 @@ public interface SustentateAPI {
     Call<List<Tip>> getTips(@Query("lastId") int id);
 
     @GET("eventos")
-    Call<List<Evento>> getEvetos(@Query("lastId")int id);
+    Call<List<Evento>> getEventos(@Query("lastId")int id);
 
 }

@@ -1,4 +1,4 @@
-package com.sustentate.app.ui;
+package ar.com.sustentate.com.ui;
 
 
 import android.graphics.drawable.Drawable;
@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sustentate.app.R;
-import com.sustentate.app.adapter.FragmentPageAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.com.sustentate.com.R;
+import ar.com.sustentate.com.adapter.FragmentPageAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,9 +49,11 @@ public class FragmentViewPager extends Fragment {
         if (adapterViewPager.getListaFragments().isEmpty()) {
 
             List<Fragment> list = new ArrayList<>();
+            FragmentEvento fragmentEvento = new FragmentEvento();
             HomeFragment homeFragment = new HomeFragment();
             FragmentTips fragmentTips = new FragmentTips();
 
+            list.add(fragmentEvento);
             list.add(homeFragment);
             list.add(fragmentTips);
             FragmentPageAdapter adapterViewPager1 = new FragmentPageAdapter(getFragmentManager(), list);
@@ -62,6 +64,7 @@ public class FragmentViewPager extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tabs);
         List<Drawable> listaIconos = new ArrayList<>();
+        listaIconos.add(getActivity().getDrawable(R.drawable.logo_ecoeventos));
         listaIconos.add(getActivity().getDrawable(R.drawable.logo_recicla));
         listaIconos.add(getActivity().getDrawable(R.drawable.logo_tips));
         tabLayout.setupWithViewPager(viewPager);
@@ -70,6 +73,9 @@ public class FragmentViewPager extends Fragment {
 
         tabLayout.getTabAt(0).setIcon(listaIconos.get(0));
         tabLayout.getTabAt(1).setIcon(listaIconos.get(1));
+        tabLayout.getTabAt(2).setIcon(listaIconos.get(2));
+
+        viewPager.setCurrentItem(1);
 
         return view;
     }

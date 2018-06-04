@@ -7,4 +7,5 @@
     <color name="slide_two">#F4511E</color>
     <color name="slide_three">#00897B</color>
     <color name="colorGrey">#FF979797</color>
+    <color name="colorWhite">#FFFFFFFF</color>
 </resources>

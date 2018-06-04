@@ -1,4 +1,4 @@
-package com.sustentate.app.models;
+package ar.com.sustentate.com.models;
 
 /**
  * Created by pablo.cavallo on 2/24/18.
