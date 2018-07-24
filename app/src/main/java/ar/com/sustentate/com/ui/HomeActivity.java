@@ -62,8 +62,8 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
         Intent intent = new Intent(this, ActivityEvento.class);
         Bundle bundle = new Bundle();
 
-        bundle.putSerializable(ActivityEvento.DATE, evento.getDate());
-        bundle.putSerializable(ActivityEvento.DATE_END, evento.getDateEnd());
+        bundle.putLong(ActivityEvento.DATE, evento.getDate());
+        bundle.putLong(ActivityEvento.DATE_END, evento.getDateEnd());
         bundle.putString(ActivityEvento.PLACE, evento.getPlace());
         bundle.putString(ActivityEvento.TEXT, evento.getText());
         bundle.putString(ActivityEvento.TITLE, evento.getTitle());

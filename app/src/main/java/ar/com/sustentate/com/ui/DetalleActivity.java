@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +28,7 @@ public class DetalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
-        if (getSupportActionBar() != null) getSupportActionBar().hide();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
 
@@ -46,5 +48,18 @@ public class DetalleActivity extends AppCompatActivity {
         Picasso.with(this).load(imageURL).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageDetalle);
         textDetalle.setText(text);
         titleDetalle.setText(title);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: //hago un case por si en un futuro agrego mas opciones
+                Log.i("ActionBar", "Atrás!");
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

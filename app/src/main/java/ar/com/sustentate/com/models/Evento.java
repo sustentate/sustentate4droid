@@ -1,7 +1,5 @@
 package ar.com.sustentate.com.models;
 
-import org.joda.time.DateTime;
-
 /**
  * Created by emzas on 27/3/2018.
  */
@@ -32,8 +30,6 @@ public class Evento {
         return date;
     }
 
-    public DateTime getRealDate(){ return DateTime.parse(String.valueOf(date));}
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -52,8 +48,6 @@ public class Evento {
 
     public long getDateEnd() { return dateEnd;}
 
-    public DateTime getRealDateEnd(){return DateTime.parse(String.valueOf(dateEnd));}
-
     public String getPlace() {
         return place;
     }
@@ -61,8 +55,6 @@ public class Evento {
     public void setDateEnd(long dateEnd) {
         this.dateEnd = dateEnd;
     }
-
-    public void setRealDateEnd(DateTime date) {date = DateTime.parse(String.valueOf(dateEnd));}
 
     public void setPlace(String place) {
         this.place = place;
@@ -73,8 +65,6 @@ public class Evento {
     }
 
     public void setDate(long date) {this.date = date;}
-
-    public void setRealDate(DateTime date) {date = DateTime.parse(String.valueOf(date));}
 
     public void setId(long id) {
         this.id = id;

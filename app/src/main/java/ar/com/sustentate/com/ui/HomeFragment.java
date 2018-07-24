@@ -43,13 +43,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        fragmentView.findViewById(R.id.button_search).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(fragmentView.getContext(), SearchActivity.class));
-            }
-        });
-
         fragmentView.findViewById(R.id.button_how).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -37,7 +37,7 @@ public class DAOEventosDeInternet {
         protected List<Evento> doInBackground(String... strings) {
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net")
+                    .baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

@@ -72,7 +72,7 @@ public class DAOTablaEventos extends DatabaseHelper {
         String place;
 
         SQLiteDatabase database = getReadableDatabase();
-        String request = "SELECT * FROM" + NOMBRE_DE_LA_TABLA;
+        String request = "SELECT * FROM " + NOMBRE_DE_LA_TABLA;
         Cursor cursor = database.rawQuery(request,null);
 
         while(cursor.moveToNext()){

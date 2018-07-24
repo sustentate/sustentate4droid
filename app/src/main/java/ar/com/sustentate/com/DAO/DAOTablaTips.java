@@ -48,8 +48,20 @@ public class DAOTablaTips extends DatabaseHelper{
             row.put(URL_TIP, tip.getImageUrl());
             row.put(DATE, tip.getDate());
 
-            baseDeDatos.insert(NOMBRE_DE_LA_TABLA, null, row);
-            baseDeDatos.close();
+            List<Tip> list = consultaDeTips();
+
+            int there = 0;
+
+            for(int i = 0; i<list.size(); i++) {
+                if (list.get(i).getId() == tip.getId()) {
+                    there++;
+                }
+            }
+
+            if (there == 0){
+                baseDeDatos.insert(NOMBRE_DE_LA_TABLA, null, row);
+                baseDeDatos.close();
+            }
         }
     }
 

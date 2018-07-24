@@ -2,12 +2,11 @@ package ar.com.sustentate.com.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import ar.com.sustentate.com.models.Evento;
  * Created by emzas on 18/3/2018.
  */
 
-public class EventosAdapter extends RecyclerView.Adapter {
+public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.ViewHolder1> {
     private List<Evento> eventos;
     private Context context;
     private EventosAdapter.Comunicador comunicador;
@@ -32,11 +31,14 @@ public class EventosAdapter extends RecyclerView.Adapter {
 
     @Override
     public ViewHolder1 onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View itemView = layoutInflater.inflate(R.layout.celda_eventos, parent, false);
+        ViewHolder1 viewHolder = new ViewHolder1(itemView);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder1 holder, int position) {
         final Evento unEvento = eventos.get(position);
         ViewHolder1 viewHolder1 = (ViewHolder1) holder;
         viewHolder1.cargarDatos(unEvento);
@@ -46,7 +48,9 @@ public class EventosAdapter extends RecyclerView.Adapter {
                 comunicador.enviarInfo(unEvento);
             }
         });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -67,16 +71,15 @@ public class EventosAdapter extends RecyclerView.Adapter {
         public ViewHolder1(View itemView) {
             super(itemView);
             celda = itemView;
-            title = (TextView) itemView.findViewById(R.id.title_evento);
-            date = (TextView) itemView.findViewById(R.id.textView_fechaEvento);
+            title = itemView.findViewById(R.id.title_evento);
+            date = itemView.findViewById(R.id.textView_fechaEvento);
             imageUrl = (ImageView) itemView.findViewById(R.id.imageview_evento);
         }
 
         public void cargarDatos (Evento evento){
-            if (evento != null && evento.getTitle() != null && evento.getImageUrl() != null && !evento.getTitle().isEmpty() && !evento.getImageUrl().isEmpty()) {
+            if (evento != null && evento.getTitle() != null && !evento.getTitle().isEmpty()) {
                 title.setText(evento.getTitle());
                 //carga imagen por default si ausente
-                Picasso.with(context).load(evento.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
             }
             else {
                 title.setText("Unable to reach the article");

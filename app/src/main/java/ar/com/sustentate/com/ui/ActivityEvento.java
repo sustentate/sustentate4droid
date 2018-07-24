@@ -7,10 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.Date;
-
 import ar.com.sustentate.com.R;
 
 public class ActivityEvento extends AppCompatActivity {
@@ -33,8 +29,8 @@ public class ActivityEvento extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        Date dateInit = (Date) bundle.getSerializable(DATE);
-        Date dateEnd = (Date) bundle.getSerializable(DATE_END);
+        Long dateInit = bundle.getLong(DATE);
+        Long dateEnd = bundle.getLong(DATE_END);
         String title = bundle.getString(TITLE);
         String text = bundle.getString(TEXT);
         String urlImage = bundle.getString(URL_EVENTO);
@@ -44,10 +40,8 @@ public class ActivityEvento extends AppCompatActivity {
         TextView texto = findViewById(R.id.textView_textDetalleEvento);
         ImageView imageDetalle = findViewById(R.id.imageView_detalleEvento);
 
-        Picasso.with(this).load(urlImage).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageDetalle);
         titulo.setText(title);
         texto.setText(text);
-
 
     }
 
