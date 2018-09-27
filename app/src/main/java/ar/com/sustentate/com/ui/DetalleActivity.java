@@ -28,8 +28,6 @@ public class DetalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-
         getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
 
         Intent intent = getIntent();

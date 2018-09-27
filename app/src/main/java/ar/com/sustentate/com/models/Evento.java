@@ -1,5 +1,7 @@
 package ar.com.sustentate.com.models;
 
+import java.util.Date;
+
 /**
  * Created by emzas on 27/3/2018.
  */
@@ -11,8 +13,8 @@ public class Evento {
     private String text;
     private String imageUrl;
     private String place;
-    private long date;
-    private long dateEnd;
+    private Date date;
+    private Date dateEnd;
     private long id;
 
 
@@ -26,7 +28,7 @@ public class Evento {
         this.id = id;
     }
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -46,13 +48,13 @@ public class Evento {
         return title;
     }
 
-    public long getDateEnd() { return dateEnd;}
+    public Date getDateEnd() { return dateEnd;}
 
     public String getPlace() {
         return place;
     }
 
-    public void setDateEnd(long dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 
@@ -64,7 +66,7 @@ public class Evento {
         this.imageUrl = imageUrl;
     }
 
-    public void setDate(long date) {this.date = date;}
+    public void setDate(Date date) {this.date = date;}
 
     public void setId(long id) {
         this.id = id;
