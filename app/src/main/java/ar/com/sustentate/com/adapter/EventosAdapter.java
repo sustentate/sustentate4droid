@@ -79,7 +79,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.ViewHold
         public void cargarDatos (Evento evento){
             if (evento != null && evento.getTitle() != null && !evento.getTitle().isEmpty()) {
                 title.setText(evento.getTitle());
-                Date
+
                 //carga imagen por default si ausente
             }
             else {

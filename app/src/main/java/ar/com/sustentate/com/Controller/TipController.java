@@ -23,7 +23,7 @@ public class TipController {
         if (hayInternet(context)){
 
             DAOTipsDeInternet daoTipsDeInternet = new DAOTipsDeInternet();
-            daoTipsDeInternet.obtenerProductosDeInternet(new ResultListener<List<Tip>>() {
+            daoTipsDeInternet.ObtenerTipsDeInternet(new ResultListener<List<Tip>>() {
                 @Override
                 public void loading() {
 

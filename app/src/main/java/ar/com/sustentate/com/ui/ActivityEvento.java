@@ -29,8 +29,7 @@ public class ActivityEvento extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        Long dateInit = bundle.getLong(DATE);
-        Long dateEnd = bundle.getLong(DATE_END);
+
         String title = bundle.getString(TITLE);
         String text = bundle.getString(TEXT);
         String urlImage = bundle.getString(URL_EVENTO);

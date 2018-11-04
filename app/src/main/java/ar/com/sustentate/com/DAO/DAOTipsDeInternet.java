@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DAOTipsDeInternet {
 
 
-    public void obtenerProductosDeInternet(ResultListener<List<Tip>> listenerFromController){
+    public void ObtenerTipsDeInternet(ResultListener<List<Tip>> listenerFromController){
 
         ObtenerListaTipsdeInternet tarea = new ObtenerListaTipsdeInternet(listenerFromController);
         tarea.execute();
@@ -59,8 +59,8 @@ public class DAOTipsDeInternet {
 
 
         @Override
-        protected void onPostExecute(List<Tip> productos) {
-            listener.finish(productos);
+        protected void onPostExecute(List<Tip> tips) {
+            listener.finish(tips);
         }
 
 

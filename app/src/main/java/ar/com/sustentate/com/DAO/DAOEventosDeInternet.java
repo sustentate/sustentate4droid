@@ -2,9 +2,14 @@ package ar.com.sustentate.com.DAO;
 
 import android.os.AsyncTask;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
+import ar.com.sustentate.com.adapter.DateDeserializer;
 import ar.com.sustentate.com.api.ResultListener;
 import ar.com.sustentate.com.api.SustentateAPI;
 import ar.com.sustentate.com.models.Evento;
@@ -36,12 +41,19 @@ public class DAOEventosDeInternet {
         @Override
         protected List<Evento> doInBackground(String... strings) {
 
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+                    .registerTypeAdapter(Date.class, new DateDeserializer())
+                    .create();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("https://sustentatemiddleware-generous-bonobo.mybluemix.net/")
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
 
+
             SustentateAPI api = retrofit.create(SustentateAPI.class);
+
             Call<List<Evento>> call = api.getEventos(0);
             try {
                 Response<List<Evento>> response = call.execute();

@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                         KeySaver.removeKey((Activity) fragmentView.getContext(), "sliding");
-                startActivity(new Intent(fragmentView.getContext(), SlideActivity.class));
+                startActivity(new Intent(fragmentView.getContext(), ChatBotActivity.class));
             }
         });
 

@@ -61,7 +61,7 @@ public class DAOTablaEventos extends DatabaseHelper {
         }
     }
 
-    public List<Evento> consultaEventos(){
+    public List<Evento> consultaEventos() {
         List<Evento> eventos = new ArrayList<>();
         String id;
         String title;
@@ -87,8 +87,9 @@ public class DAOTablaEventos extends DatabaseHelper {
             place = cursor.getString(cursor.getColumnIndex(PLACE));
 
 
-            evento.setDate(Long.parseLong(date));
-            evento.setDateEnd(Long.parseLong(endDate));
+
+
+
             evento.setId(Long.parseLong(id));
             evento.setPlace(place);
             evento.setText(text);

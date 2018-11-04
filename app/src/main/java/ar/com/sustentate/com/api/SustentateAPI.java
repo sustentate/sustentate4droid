@@ -3,6 +3,8 @@ package ar.com.sustentate.com.api;
 
 import java.util.List;
 
+import ar.com.sustentate.com.models.AssistanceRequest;
+import ar.com.sustentate.com.models.AssistanceResponse;
 import ar.com.sustentate.com.models.ClassificationRequest;
 import ar.com.sustentate.com.models.ClassificationResponse;
 import ar.com.sustentate.com.models.Evento;
@@ -27,5 +29,8 @@ public interface SustentateAPI {
 
     @GET("eventos")
     Call<List<Evento>> getEventos(@Query("lastId")int id);
+
+    @POST("chat")
+    Call<AssistanceResponse> chat(@Body AssistanceRequest request);
 
 }
