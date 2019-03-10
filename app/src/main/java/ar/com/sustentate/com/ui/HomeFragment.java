@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         fragmentView.findViewById(R.id.button_cam).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(fragmentView.getContext(), MainActivity.class));
+                startActivity(new Intent(fragmentView.getContext(), ChatBotActivity.class));
             }
         });
 
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                         KeySaver.removeKey((Activity) fragmentView.getContext(), "sliding");
-                startActivity(new Intent(fragmentView.getContext(), ChatBotActivity.class));
+                startActivity(new Intent(fragmentView.getContext(), SlideActivity.class));
             }
         });
 

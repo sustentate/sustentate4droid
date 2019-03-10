@@ -7,9 +7,10 @@ package ar.com.sustentate.com.models;
 public class Message {
     private String sentence;
     private String urlAttachment;
-
-    public Message(String sentence, String urlAttachment) {
+    private String sessionId;
+    public Message(String sentence, String urlAttachment, String sessionId) {
         this.sentence = sentence;
+        this.sessionId = sessionId;
         this.urlAttachment = urlAttachment;
     }
 
@@ -31,5 +32,13 @@ public class Message {
 
     public void setUrlAttachment(String urlAttachment) {
         this.urlAttachment = urlAttachment;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }

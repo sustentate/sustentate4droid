@@ -38,14 +38,21 @@
             android:name="ar.com.sustentate.com.utils.GlideConfiguration"
             android:value="GlideModule" />
 
-        <activity android:name=".ui.DetalleActivity" />
+        <activity android:name=".ui.DetalleActivity"
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.ActivityEvento"
             android:label="@string/title_activity_evento"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.HomeActivity"/>
 
         <activity android:name=".ui.ChatBotActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.HomeActivity"></activity>
     </application>
 

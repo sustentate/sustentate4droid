@@ -72,14 +72,14 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.ViewHold
             super(itemView);
             celda = itemView;
             title = itemView.findViewById(R.id.title_evento);
-            date = itemView.findViewById(R.id.textView_fechaEvento);
             imageUrl = (ImageView) itemView.findViewById(R.id.imageview_evento);
         }
 
         public void cargarDatos (Evento evento){
             if (evento != null && evento.getTitle() != null && !evento.getTitle().isEmpty()) {
                 title.setText(evento.getTitle());
-
+                int id = context.getResources().getIdentifier("a"+ evento.getDay().toString(),"drawable",context.getPackageName());
+                imageUrl.setImageResource(id);
                 //carga imagen por default si ausente
             }
             else {

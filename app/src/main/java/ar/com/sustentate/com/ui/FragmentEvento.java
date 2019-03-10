@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,23 +48,27 @@ public class FragmentEvento extends Fragment implements EventosAdapter.Comunicad
         recyclerViewEventos.setAdapter(adapter);
 
         EventoController eventoController = new EventoController();
-        eventoController.obtenerEventos(getContext(), new ResultListener<List<Evento>>() {
-            @Override
-            public void loading() {
+        try {
+            eventoController.obtenerEventos(getContext(), new ResultListener<List<Evento>>() {
+                @Override
+                public void loading() {
 
-            }
+                }
 
-            @Override
-            public void finish(List<Evento> result) {
-                eventos = result;
-                adapter.cargarNuevaLista(eventos);
-            }
+                @Override
+                public void finish(List<Evento> result) {
+                    eventos = result;
+                    adapter.cargarNuevaLista(eventos);
+                }
 
-            @Override
-            public void error(Throwable error) {
+                @Override
+                public void error(Throwable error) {
 
-            }
-        });
+                }
+            });
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
         return view;

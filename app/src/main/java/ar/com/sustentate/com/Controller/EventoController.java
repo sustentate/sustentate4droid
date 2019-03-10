@@ -2,6 +2,7 @@ package ar.com.sustentate.com.Controller;
 
 import android.content.Context;
 
+import java.text.ParseException;
 import java.util.List;
 
 import ar.com.sustentate.com.DAO.DAOEventosDeInternet;
@@ -16,7 +17,7 @@ import ar.com.sustentate.com.utils.HTTPConnectionManager;
 
 public class EventoController {
 
-    public void obtenerEventos(Context context, final ResultListener<List<Evento>> listenerFromView){
+    public void obtenerEventos(Context context, final ResultListener<List<Evento>> listenerFromView) throws ParseException {
 
         final DAOTablaEventos daoTablaEventos = new DAOTablaEventos(context);
 

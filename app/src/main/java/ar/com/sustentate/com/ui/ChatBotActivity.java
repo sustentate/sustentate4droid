@@ -20,6 +20,7 @@ public class ChatBotActivity extends AppCompatActivity {
     EditText editText;
     ListView listView;
     MessageAdapter messageAdapter;
+    String lsessionid = "";
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -31,8 +32,8 @@ public class ChatBotActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        final Context context = this;
 
+        final Context context = this;
         editText = (EditText) findViewById(R.id.editText);
         messageAdapter = new MessageAdapter(this);
         listView = (ListView) findViewById(R.id.messages_view);
@@ -43,7 +44,7 @@ public class ChatBotActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message = editText.getText().toString();
                 editText.getText().clear();
-                final AssistanceRequest assistanceRequest = new AssistanceRequest(message, "www.google.com","1" );
+                final AssistanceRequest assistanceRequest = new AssistanceRequest(message, "www.google.com", lsessionid );
                 messageAdapter.add(assistanceRequest);
                 final MessageController messageController = new MessageController();
                 messageController.obtenerResponse(context, assistanceRequest, new ResultListener<AssistanceResponse>() {
@@ -55,6 +56,7 @@ public class ChatBotActivity extends AppCompatActivity {
                     @Override
                     public void finish(AssistanceResponse result) {
                         messageAdapter.add(result);
+                        lsessionid = result.getSessionId();
                         listView.setSelection(listView.getCount() - 1);
                     }
 

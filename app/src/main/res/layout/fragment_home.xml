@@ -39,21 +39,15 @@
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/round_home_cam"
             android:elevation="5dp"
             android:gravity="center"
-            android:text="¡IMAGEN!"
+            android:background="@drawable/round_home_cam"
+            android:text="HABLEMOS"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="30dp"
-            android:elevation="5dp"
-            android:src="@drawable/cam_recycle" />
+
     </RelativeLayout>
 
     <TextView
@@ -67,7 +61,7 @@
         android:background="@drawable/round_home_how"
         android:elevation="5dp"
         android:gravity="center"
-        android:text="¿CÓMO FUNCIONA?"
+        android:text="¿Cómo funciona?"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold" />

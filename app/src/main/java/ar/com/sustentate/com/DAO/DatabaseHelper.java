@@ -27,8 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         String creaTablaTips="CREATE TABLE TIPS ("+ DAOTablaTips.ID +" PRIMARY KEY NOT NULL,"+DAOTablaTips.TITLE+" text NOT NULL,"+DAOTablaTips.DATE+" text NOT NULL,"+ DAOTablaTips.URL_TIP+" text NOT NULL,"+DAOTablaTips.TEXT+" text NOT NULL);";
-        String creaTablaEventos="CREATE TABLE EVENTOS ("+ DAOTablaEventos.ID+" text NOT NULL,"+DAOTablaEventos.TITLE+" text NOT NULL,"+DAOTablaEventos.DATE+" text NOT NULL,"+DAOTablaEventos.DATE_END+" text NOT NULL,"+ DAOTablaEventos.URL_EVENTO+" TEXT,"+DAOTablaEventos.TEXT+" text NOT NULL,"+DAOTablaEventos.PLACE+
-         "  text NOT NULL);";
+        String creaTablaEventos="CREATE TABLE EVENTOS ("+ DAOTablaEventos.ID+" PRIMARY KEY NOT NULL,"+DAOTablaEventos.TITLE+" text,"+DAOTablaEventos.DATE+" text,"+DAOTablaEventos.ADDRESS+" text,"+ DAOTablaEventos.LINK+" text,"+DAOTablaEventos.DESCRIPTION+" text,"+DAOTablaEventos.PUBLISHED+" text,"+DAOTablaEventos.PRICE+" text,"+DAOTablaEventos.PROMOTED+" text);";
 
         db.execSQL(creaTablaTips);
         db.execSQL(creaTablaEventos);

@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +24,16 @@ public class DAOTablaEventos extends DatabaseHelper {
     public static final String NOMBRE_DE_LA_TABLA = "EVENTOS";
     public static final String ID = "id";
     public static final String TITLE = "title";
-    public static final String TEXT = "text";
-    public static final String URL_EVENTO= "url";
+    public static final String DESCRIPTION = "description";
+    public static final String LINK= "url";
+    public static final String PUBLISHED= "published";
+    public static final String PROMOTED= "promoted";
     public static final String DATE = "date";
-    public static final String DATE_END = "date_end";
-    public static final String PLACE = "place";
+    public static final String ADDRESS = "place";
+    public static final String PRICE= "price";
+    public static final String TYPE= "type";
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -40,12 +49,17 @@ public class DAOTablaEventos extends DatabaseHelper {
 
             row.put(ID , evento.getId());
             row.put(TITLE, evento.getTitle());
-            row.put(TEXT, evento.getText());
-            row.put(URL_EVENTO, evento.getImageUrl());
-            row.put(DATE, String.valueOf(evento.getDate()));
-            row.put(DATE_END, String.valueOf(evento.getDate()));
-            row.put(PLACE, String.valueOf(evento.getDateEnd()));
-            database.insert(NOMBRE_DE_LA_TABLA, null, row);
+            row.put(DESCRIPTION, evento.getDescription());
+            row.put(DATE, String.valueOf(evento.getStartDateTime()));
+            row.put(ADDRESS, String.valueOf(evento.getAddress()));
+            row.put(LINK, String.valueOf(evento.getLink()));
+            row.put(PUBLISHED, String.valueOf(evento.isPublished()));
+            row.put(PROMOTED, String.valueOf(evento.getPromoted()));
+            row.put(PRICE, String.valueOf(evento.getPrice()));
+            row.put(ADDRESS, String.valueOf(evento.getAddress()));
+            //TODO: Mirar esto
+            //row.put(TYPE, String.valueOf(evento.getType().toString()));
+            //database.insert(NOMBRE_DE_LA_TABLA, null, row);
             database.close();
 
         }
@@ -61,15 +75,18 @@ public class DAOTablaEventos extends DatabaseHelper {
         }
     }
 
-    public List<Evento> consultaEventos() {
+    public List<Evento> consultaEventos() throws ParseException {
         List<Evento> eventos = new ArrayList<>();
         String id;
         String title;
-        String text;
-        String urlEvento;
+        String description;
+        String link;
         String date;
-        String endDate;
-        String place;
+        String address;
+        String published;
+        String price;
+        String type;
+        String promoted;
 
         SQLiteDatabase database = getReadableDatabase();
         String request = "SELECT * FROM " + NOMBRE_DE_LA_TABLA;
@@ -80,21 +97,26 @@ public class DAOTablaEventos extends DatabaseHelper {
 
             id = cursor.getString(cursor.getColumnIndex(ID));
             title = cursor.getString(cursor.getColumnIndex(TITLE));
-            text = cursor.getString(cursor.getColumnIndex(TEXT));
-            urlEvento = cursor.getString(cursor.getColumnIndex(URL_EVENTO));
+            description = cursor.getString(cursor.getColumnIndex(DESCRIPTION));
+            link = cursor.getString(cursor.getColumnIndex(LINK));
             date = cursor.getString(cursor.getColumnIndex(DATE));
-            endDate = cursor.getString(cursor.getColumnIndex(DATE_END));
-            place = cursor.getString(cursor.getColumnIndex(PLACE));
+            address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            price = cursor.getString(cursor.getColumnIndex(PRICE));
+            promoted = cursor.getString(cursor.getColumnIndex(PROMOTED));
+            type = cursor.getString(cursor.getColumnIndex(TYPE));
+            published = cursor.getString(cursor.getColumnIndex(PUBLISHED));
 
+            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
+            Date dater = (Date) df.parse(date);
 
-
-
-
-            evento.setId(Long.parseLong(id));
-            evento.setPlace(place);
-            evento.setText(text);
+            evento.set_id(id);
+            evento.setAddress(address);
+            evento.setDescription(description);
             evento.setTitle(title);
-            evento.setImageUrl(urlEvento);
+            evento.setPrice(Long.parseLong(price));
+            evento.setPromoted(Boolean.parseBoolean(promoted));
+            evento.setLink(link);
+            evento.setStartDateTime(dater);
             eventos.add(evento);
         }
 

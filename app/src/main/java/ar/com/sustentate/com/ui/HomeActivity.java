@@ -62,13 +62,17 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
         Intent intent = new Intent(this, ActivityEvento.class);
         Bundle bundle = new Bundle();
 
-        bundle.putSerializable(ActivityEvento.DATE, evento.getDate());
-        bundle.putSerializable(ActivityEvento.DATE_END, evento.getDateEnd());
-        bundle.putString(ActivityEvento.PLACE, evento.getPlace());
-        bundle.putString(ActivityEvento.TEXT, evento.getText());
+        bundle.putSerializable(ActivityEvento.DATE, evento.getStartDateTime());
+        bundle.putString(ActivityEvento.ADDRESS, evento.getAddress());
+        bundle.putString(ActivityEvento.DESCRIPTION,evento.getDescription());
+        bundle.putBoolean(ActivityEvento.PROMOTED,evento.getPromoted());
+        bundle.putBoolean(ActivityEvento.PUBLISHED,evento.isPublished());
+        //TODO revisar
+        //bundle.putString(ActivityEvento.TYPE, String.valueOf(evento.getType()));
+        bundle.putString(ActivityEvento.PRICE, evento.getPrice().toString());
         bundle.putString(ActivityEvento.TITLE, evento.getTitle());
-        bundle.putString(ActivityEvento.URL_EVENTO, evento.getImageUrl());
-        bundle.putLong(ActivityEvento.ID, evento.getId());
+        bundle.putString(ActivityEvento.LINK, evento.getLink());
+        bundle.putString(ActivityEvento.ID, evento.getId());
 
         intent.putExtras(bundle);
         startActivity(intent);

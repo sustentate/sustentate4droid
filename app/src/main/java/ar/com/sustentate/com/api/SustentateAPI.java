@@ -27,7 +27,7 @@ public interface SustentateAPI {
     @GET("ecotip")
     Call<List<Tip>> getTips(@Query("lastId") int id);
 
-    @GET("eventos")
+    @GET("events")
     Call<List<Evento>> getEventos(@Query("lastId")int id);
 
     @POST("chat")

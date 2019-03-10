@@ -38,7 +38,7 @@ public class MessageController {
                 }
             });
         }else {
-            AssistanceResponse assistanceResponse = new AssistanceResponse("No hay conexion","www.google.com", 3);
+            AssistanceResponse assistanceResponse = new AssistanceResponse("No hay conexion","www.google.com", 3, "0");
             listenerFromView.finish(assistanceResponse);
         }
 

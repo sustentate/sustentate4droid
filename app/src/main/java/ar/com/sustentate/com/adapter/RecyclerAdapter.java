@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import ar.com.sustentate.com.R;
@@ -85,12 +83,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             if (tip != null && tip.getTitle() != null && tip.getImageUrl() != null && !tip.getTitle().isEmpty() && !tip.getImageUrl().isEmpty()) {
                 title.setText(tip.getTitle());
                 //carga imagen por default si ausente
-                Picasso.with(context).load(tip.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
+                imageUrl.setImageResource(R.drawable.ecotips2);
+
+                //Picasso.with(context).load(tip.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
             }
             else {
                 title.setText("Unable to reach the article");
-                //Picasso.with(context).load(articulo.getUrlToImage()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageViewRecycler);
-                imageUrl.setImageResource(R.drawable.placeholder);
+                imageUrl.setImageResource(R.drawable.ecotips2);
             }
         }
     }

@@ -8,8 +8,8 @@ public class AssistanceResponse extends Message {
 
     private int status; // 0 OK
 
-    public AssistanceResponse(String sentence, String urlAttachment, int status) {
-        super(sentence, urlAttachment);
+    public AssistanceResponse(String sentence, String urlAttachment, int status, String sessionid) {
+        super(sentence, urlAttachment, sessionid);
         this.status = status;
     }
 
