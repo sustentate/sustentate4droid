@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
         bundle.putBoolean(ActivityEvento.PUBLISHED,evento.isPublished());
         //TODO revisar
         //bundle.putString(ActivityEvento.TYPE, String.valueOf(evento.getType()));
-        bundle.putString(ActivityEvento.PRICE, evento.getPrice().toString());
+       // bundle.putString(ActivityEvento.PRICE, evento.getPrice().toString());
         bundle.putString(ActivityEvento.TITLE, evento.getTitle());
         bundle.putString(ActivityEvento.LINK, evento.getLink());
         bundle.putString(ActivityEvento.ID, evento.getId());

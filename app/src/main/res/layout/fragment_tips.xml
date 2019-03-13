@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ar.com.sustentate.com.ui.FragmentTips"
-    android:background="#FFFFFF">
+    android:background="@color/colorLigthGrey">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags = "scroll|exitUntilCollapsed"
+            android:background="@color/colorLigthGrey"
             android:id="@+id/collapsingToolbar"
             android:paddingTop="50dp"
             >

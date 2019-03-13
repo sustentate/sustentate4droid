@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,10 +55,14 @@ public class DAOTablaTips extends DatabaseHelper{
 
     public void insertarLosTips(List<Tip> tips) {
         for (Tip tip : tips) {
-            if (tip.equals(null)) {
+            try {
+                if (tip.equals(null) || tipsUni(tip)) {
 
-            } else {
-                insertarDatosEnTabla(tip);
+                } else {
+                    insertarDatosEnTabla(tip);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -71,7 +76,6 @@ public class DAOTablaTips extends DatabaseHelper{
         String date;
         SQLiteDatabase baseDeDatos = getReadableDatabase();
         String sentenciaConsulta="SELECT * FROM "+NOMBRE_DE_LA_TABLA ;
-        //String sentenciaConsulta="SELECT * FROM "+NOMBRE_DE_LA_TABLA;
         Cursor cursor = baseDeDatos.rawQuery(sentenciaConsulta,null);
         while(cursor.moveToNext()){
             Tip tip=new Tip();
@@ -93,6 +97,19 @@ public class DAOTablaTips extends DatabaseHelper{
         cursor.close();
         baseDeDatos.close();
         return tips;
+    }
+    public boolean tipsUni(Tip tip) throws ParseException {
+        boolean some = false;
+
+        List<Tip> eventos = consultaDeTips();
+
+        for (Tip tip1: eventos) {
+            if (tip.getId() == tip1.getId()){
+                some = true;
+            }
+        }
+
+        return some;
     }
 
 

@@ -40,8 +40,8 @@ public class DAOTablaEventos extends DatabaseHelper {
         return super.equals(obj);
     }
 
-    public void insertarDatosEnTabla(Evento evento){
-        if(evento == null){
+    public void insertarDatosEnTabla(Evento evento) throws ParseException {
+        if(evento == null ){
 
         }else{
             SQLiteDatabase database = getWritableDatabase();
@@ -59,15 +59,15 @@ public class DAOTablaEventos extends DatabaseHelper {
             row.put(ADDRESS, String.valueOf(evento.getAddress()));
             //TODO: Mirar esto
             //row.put(TYPE, String.valueOf(evento.getType().toString()));
-            //database.insert(NOMBRE_DE_LA_TABLA, null, row);
+            database.insert(NOMBRE_DE_LA_TABLA, null, row);
             database.close();
 
         }
     }
 
-    public void insertarLosEventos(List<Evento> eventos){
+    public void insertarLosEventos(List<Evento> eventos) throws ParseException {
         for (Evento evento : eventos){
-            if(evento.equals(null)){
+            if(evento.equals(null) || eventosUni(evento)){
 
             }else {
                 insertarDatosEnTabla(evento);
@@ -123,6 +123,20 @@ public class DAOTablaEventos extends DatabaseHelper {
         cursor.close();
         database.close();
         return eventos;
+    }
+
+    public boolean eventosUni(Evento evento) throws ParseException {
+        boolean some = false;
+
+        List<Evento> eventos = consultaEventos();
+
+        for (Evento evento1 : eventos) {
+            if (evento.getId() == evento1.getId()){
+                some = true;
+            }
+        }
+
+        return some;
     }
 
 

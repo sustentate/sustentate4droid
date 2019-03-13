@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -67,7 +68,11 @@ public class DAOEventosDeInternet {
 
         @Override
         protected void onPostExecute(List<Evento> eventos) {
-            listener.finish(eventos);
+            try {
+                listener.finish(eventos);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

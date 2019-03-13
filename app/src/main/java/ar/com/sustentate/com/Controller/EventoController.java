@@ -31,7 +31,7 @@ public class EventoController {
                 }
 
                 @Override
-                public void finish(List<Evento> result) {
+                public void finish(List<Evento> result) throws ParseException {
                     if(result != null){
                         daoTablaEventos.insertarLosEventos(result);
                         listenerFromView.finish(result);

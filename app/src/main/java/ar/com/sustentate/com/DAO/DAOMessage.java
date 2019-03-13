@@ -3,6 +3,7 @@ package ar.com.sustentate.com.DAO;
 import android.os.AsyncTask;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import ar.com.sustentate.com.api.ResultListener;
 import ar.com.sustentate.com.api.SustentateAPI;
@@ -63,7 +64,11 @@ public class DAOMessage {
         @Override
         protected void onPostExecute(Message message) {
             AssistanceResponse response = (AssistanceResponse) message;
-            listener.finish(response);
+            try {
+                listener.finish(response);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

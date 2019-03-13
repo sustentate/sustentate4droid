@@ -3,6 +3,7 @@ package ar.com.sustentate.com.DAO;
 import android.os.AsyncTask;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import ar.com.sustentate.com.api.ResultListener;
@@ -60,7 +61,11 @@ public class DAOTipsDeInternet {
 
         @Override
         protected void onPostExecute(List<Tip> tips) {
-            listener.finish(tips);
+            try {
+                listener.finish(tips);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
 

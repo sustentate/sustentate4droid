@@ -1,12 +1,13 @@
 package ar.com.sustentate.com.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.text.ParseException;
 
 import ar.com.sustentate.com.Controller.MessageController;
 import ar.com.sustentate.com.R;
@@ -21,6 +22,7 @@ public class ChatBotActivity extends AppCompatActivity {
     ListView listView;
     MessageAdapter messageAdapter;
     String lsessionid = "";
+    MessageController messageController = new MessageController();
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -33,41 +35,56 @@ public class ChatBotActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final Context context = this;
         editText = (EditText) findViewById(R.id.editText);
         messageAdapter = new MessageAdapter(this);
         listView = (ListView) findViewById(R.id.messages_view);
         listView.setAdapter(messageAdapter);
 
+        try {
+            messageAdm("hola", false);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = editText.getText().toString();
-                editText.getText().clear();
-                final AssistanceRequest assistanceRequest = new AssistanceRequest(message, "www.google.com", lsessionid );
-                messageAdapter.add(assistanceRequest);
-                final MessageController messageController = new MessageController();
-                messageController.obtenerResponse(context, assistanceRequest, new ResultListener<AssistanceResponse>() {
-                    @Override
-                    public void loading() {
+                try {
+                    messageAdm(message, true);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-                    }
+    }
 
-                    @Override
-                    public void finish(AssistanceResponse result) {
-                        messageAdapter.add(result);
-                        lsessionid = result.getSessionId();
-                        listView.setSelection(listView.getCount() - 1);
-                    }
+    private void messageAdm(String message, final boolean user) throws ParseException {
+        editText.getText().clear();
+        final AssistanceRequest assistanceRequest = new AssistanceRequest(message, "www.google.com", lsessionid );
+        if (user){messageAdapter.add(assistanceRequest);}
+        messageController.obtenerResponse(this, assistanceRequest, new ResultListener<AssistanceResponse>() {
+            @Override
+            public void loading() {
+                listView.setSelection(listView.getCount() - 1);
 
-                    @Override
-                    public void error(Throwable error) {
+            }
 
-                    }
-                });
+            @Override
+            public void finish(AssistanceResponse result) {
+                messageAdapter.add(result);
+                lsessionid = result.getSessionId();
+                listView.setSelection(listView.getCount() - 1);
+            }
+
+            @Override
+            public void error(Throwable error) {
 
             }
         });
+
     }
 
 

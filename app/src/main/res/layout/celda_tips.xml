@@ -6,7 +6,7 @@
     android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white">
+    android:background="@color/colorLigthGrey">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -27,7 +27,6 @@
                 android:gravity="center"
                 android:scaleType="centerCrop"
                 android:background="@color/colorWhite"/>
-
             <TextView
                 android:id="@+id/title_tip"
                 android:layout_width="match_parent"

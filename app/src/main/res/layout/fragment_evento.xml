@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ar.com.sustentate.com.ui.FragmentEvento"
-    android:background="#FFFFFF">
+    android:background="@color/colorLigthGrey">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags = "scroll|exitUntilCollapsed"
+            android:background="@color/colorLigthGrey"
             android:id="@+id/collapsingToolbar"
             android:paddingTop="50dp"
             >
@@ -41,6 +42,7 @@
             android:id="@+id/recyclerView_eventos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorLigthGrey"
             />
     </android.support.v4.widget.NestedScrollView>
 

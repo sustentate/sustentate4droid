@@ -51,8 +51,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView homeBg = fragmentView.findViewById(R.id.home_bg);
-        Glide.with(this).load(R.drawable.bg_main).apply(RequestOptions.bitmapTransform(new BlurTransformation(130))).into(homeBg);
+
         return fragmentView;
         }
     }

@@ -2,6 +2,7 @@ package ar.com.sustentate.com.Controller;
 
 import android.content.Context;
 
+import java.text.ParseException;
 import java.util.List;
 
 import ar.com.sustentate.com.DAO.DAOTablaTips;
@@ -16,7 +17,7 @@ import ar.com.sustentate.com.utils.HTTPConnectionManager;
 
 public class TipController {
 
-    public void obtenerTips( Context context, final ResultListener<List<Tip>> listenerFromView) {
+    public void obtenerTips( Context context, final ResultListener<List<Tip>> listenerFromView) throws ParseException {
 
         final DAOTablaTips daoTablaTips = new DAOTablaTips(context);
 
@@ -30,7 +31,7 @@ public class TipController {
                 }
 
                 @Override
-                public void finish(List<Tip> result) {
+                public void finish(List<Tip> result) throws ParseException {
                     if (result != null){
                         daoTablaTips.insertarLosTips(result);
                         listenerFromView.finish(result);

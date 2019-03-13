@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,24 +46,28 @@ public class FragmentTips extends Fragment implements RecyclerAdapter.Comunicado
         recyclerViewTips.setAdapter(adapter);
 
         TipController tipController = new TipController();
-        tipController.obtenerTips(getContext() , new ResultListener<List<Tip>>() {
-            @Override
-            public void loading() {
+        try {
+            tipController.obtenerTips(getContext() , new ResultListener<List<Tip>>() {
+                @Override
+                public void loading() {
 
-            }
+                }
 
-            @Override
-            public void finish(List<Tip> result) {
-                tipList = result;
-                adapter.cargarNuevaLista(tipList);
+                @Override
+                public void finish(List<Tip> result) {
+                    tipList = result;
+                    adapter.cargarNuevaLista(tipList);
 
-            }
+                }
 
-            @Override
-            public void error(Throwable error) {
+                @Override
+                public void error(Throwable error) {
 
-            }
-        });
+                }
+            });
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }

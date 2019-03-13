@@ -2,6 +2,8 @@ package ar.com.sustentate.com.Controller;
 
 import android.content.Context;
 
+import java.text.ParseException;
+
 import ar.com.sustentate.com.DAO.DAOMessage;
 import ar.com.sustentate.com.api.ResultListener;
 import ar.com.sustentate.com.models.AssistanceRequest;
@@ -14,7 +16,7 @@ import ar.com.sustentate.com.utils.HTTPConnectionManager;
 
 public class MessageController {
 
-    public void obtenerResponse(Context context, final AssistanceRequest request, final ResultListener<AssistanceResponse> listenerFromView){
+    public void obtenerResponse(Context context, final AssistanceRequest request, final ResultListener<AssistanceResponse> listenerFromView) throws ParseException {
 
         if(hayInternet(context)){
 
@@ -26,7 +28,7 @@ public class MessageController {
                 }
 
                 @Override
-                public void finish(AssistanceResponse result) {
+                public void finish(AssistanceResponse result) throws ParseException {
                     if(request != null){
                         listenerFromView.finish(result);
                     }
