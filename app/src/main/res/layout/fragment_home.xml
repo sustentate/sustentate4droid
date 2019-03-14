@@ -3,9 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorLigthGrey"
     android:id="@+id/rlxdlol"
     android:paddingBottom="50dp">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/how"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="top|right"
+        android:layout_margin="15dp"
+        android:src="@drawable/question_icon"
+        app:backgroundTint="@color/colorWhite"
+        app:borderWidth="0dp" />
 
     <ImageView
         android:layout_width="220dp"
@@ -53,7 +64,7 @@
         android:background="@drawable/round_home_how"
         android:elevation="5dp"
         android:gravity="center"
-        android:text="¿Cómo funciona?"
+        android:text="CAMARA"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -65,7 +76,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="v 0.9"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/darker_gray"
         android:textSize="14sp" />
 
 </RelativeLayout>

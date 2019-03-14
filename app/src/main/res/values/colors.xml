@@ -13,4 +13,5 @@
     <color name="tab_enable">#FFFFFF</color>
     <color name="tab_checked">#00897B</color>
     <color name="tab_unchecked">#FFFFFF</color>
+    <color name="trans">#00000000</color>
 </resources>
