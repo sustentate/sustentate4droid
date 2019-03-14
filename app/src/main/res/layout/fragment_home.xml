@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLigthGrey"
-    android:id="@+id/rlxdlol">
+    android:id="@+id/rlxdlol"
+    android:paddingBottom="50dp">
 
     <ImageView
         android:layout_width="220dp"

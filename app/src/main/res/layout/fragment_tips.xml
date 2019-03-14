@@ -20,7 +20,6 @@
             app:layout_scrollFlags = "scroll|exitUntilCollapsed"
             android:background="@color/colorLigthGrey"
             android:id="@+id/collapsingToolbar"
-            android:paddingTop="50dp"
             >
 
             <ImageView

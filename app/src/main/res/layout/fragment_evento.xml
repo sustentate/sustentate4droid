@@ -19,7 +19,6 @@
             app:layout_scrollFlags = "scroll|exitUntilCollapsed"
             android:background="@color/colorLigthGrey"
             android:id="@+id/collapsingToolbar"
-            android:paddingTop="50dp"
             >
 
             <ImageView
@@ -27,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_ag" />
+                android:src="@drawable/logo_ag"
+                android:padding="10dp"/>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

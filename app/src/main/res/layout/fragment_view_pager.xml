@@ -1,11 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ar.com.sustentate.com.ui.FragmentViewPager">
 
 
-    <ar.com.sustentate.com.ui.CustomTabLayout
+    <!--<ar.com.sustentate.com.ui.CustomTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +16,8 @@
         android:elevation="12dp"
         android:fitsSystemWindows="false"
         android:visibility="visible"
-        tools:verticalScrollbarPosition="defaultPosition" />
+        tools:verticalScrollbarPosition="defaultPosition" />-->
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_Pager"
@@ -24,4 +26,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
-</FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_navigation_color_selector"
+        app:itemTextColor="@drawable/bottom_navigation_color_selector"
+        app:menu="@menu/menu_bottom_navigation"/>
+</RelativeLayout>

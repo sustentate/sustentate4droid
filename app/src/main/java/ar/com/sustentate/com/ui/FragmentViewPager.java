@@ -1,12 +1,14 @@
 package ar.com.sustentate.com.ui;
 
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,6 +27,10 @@ public class FragmentViewPager extends Fragment {
 
     FragmentPageAdapter adapterViewPager;
 
+    BottomNavigationView bottomNavigationView;
+
+    MenuItem prevMenuItem;
+
     public FragmentViewPager() {
         // Required empty public constructor
 
@@ -41,7 +47,7 @@ public class FragmentViewPager extends Fragment {
         adapterViewPager = new FragmentPageAdapter(getFragmentManager(), fragments);
 
 
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_Pager);
+        final ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_Pager);
 
 
         viewPager.setAdapter(adapterViewPager);
@@ -62,7 +68,7 @@ public class FragmentViewPager extends Fragment {
 
         }
 
-        TabLayout tabLayout = view.findViewById(R.id.tabs);
+        /*TabLayout tabLayout = view.findViewById(R.id.tabs);
         List<Drawable> listaIconos = new ArrayList<>();
         listaIconos.add(getActivity().getDrawable(R.drawable.logo_ecoeventos));
         listaIconos.add(getActivity().getDrawable(R.drawable.logo_recicla));
@@ -73,8 +79,67 @@ public class FragmentViewPager extends Fragment {
 
         tabLayout.getTabAt(0).setIcon(listaIconos.get(0));
         tabLayout.getTabAt(1).setIcon(listaIconos.get(1));
-        tabLayout.getTabAt(2).setIcon(listaIconos.get(2));
+        tabLayout.getTabAt(2).setIcon(listaIconos.get(2));*/
 
+        bottomNavigationView = (BottomNavigationView)view.findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+
+                            case R.id.action_call:
+
+                                viewPager.setCurrentItem(0);
+
+                                break;
+
+                            case R.id.action_chat:
+
+                                viewPager.setCurrentItem(1);
+
+                                break;
+
+                            case R.id.action_contact:
+
+                                viewPager.setCurrentItem(2);
+
+                                break;
+
+                        }
+
+                        return false;
+
+                    }
+                });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                }
+                else
+                {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                }
+                Log.d("page", "onPageSelected: "+position);
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setCurrentItem(1);
 
         return view;
