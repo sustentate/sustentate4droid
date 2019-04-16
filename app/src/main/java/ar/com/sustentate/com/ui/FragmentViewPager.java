@@ -68,18 +68,6 @@ public class FragmentViewPager extends Fragment {
 
         }
 
-        /*TabLayout tabLayout = view.findViewById(R.id.tabs);
-        List<Drawable> listaIconos = new ArrayList<>();
-        listaIconos.add(getActivity().getDrawable(R.drawable.logo_ecoeventos));
-        listaIconos.add(getActivity().getDrawable(R.drawable.logo_recicla));
-        listaIconos.add(getActivity().getDrawable(R.drawable.logo_tips));
-        tabLayout.setupWithViewPager(viewPager);
-
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.slide_three));
-
-        tabLayout.getTabAt(0).setIcon(listaIconos.get(0));
-        tabLayout.getTabAt(1).setIcon(listaIconos.get(1));
-        tabLayout.getTabAt(2).setIcon(listaIconos.get(2));*/
 
         bottomNavigationView = (BottomNavigationView)view.findViewById(R.id.bottom_navigation);
 

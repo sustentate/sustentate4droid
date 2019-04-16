@@ -26,7 +26,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
         //Instancio un fragment donde está el listview
         FragmentViewPager fragmentRecycleView = new FragmentViewPager();
         //Pido el fragment manager

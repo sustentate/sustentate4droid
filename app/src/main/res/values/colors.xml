@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#25C19B</color>
-    <color name="colorPrimaryDark">#25C19B</color>
+    <color name="colorPrimaryDark">#21a988</color>
     <color name="colorAccent">#FF4081</color>
     <color name="slide_one">#1976D2</color>
     <color name="slide_two">#F4511E</color>
@@ -11,7 +11,7 @@
     <color name="colorWhite">#FFFFFFFF</color>
     <color name="tab_disable">#979797</color>
     <color name="tab_enable">#FFFFFF</color>
-    <color name="tab_checked">#00897B</color>
-    <color name="tab_unchecked">#FFFFFF</color>
+    <color name="tab_checked">#FFFFFF</color>
+    <color name="tab_unchecked">#00897B</color>
     <color name="trans">#00000000</color>
 </resources>

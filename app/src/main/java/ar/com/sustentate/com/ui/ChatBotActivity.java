@@ -3,8 +3,11 @@ package ar.com.sustentate.com.ui;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.text.ParseException;
@@ -15,16 +18,19 @@ import ar.com.sustentate.com.adapter.MessageAdapter;
 import ar.com.sustentate.com.api.ResultListener;
 import ar.com.sustentate.com.models.AssistanceRequest;
 import ar.com.sustentate.com.models.AssistanceResponse;
+import ar.com.sustentate.com.utils.HTTPConnectionManager;
 
 public class ChatBotActivity extends AppCompatActivity {
 
     EditText editText;
+    ImageButton sendButton;
     ListView listView;
+    LinearLayout editChat;
     MessageAdapter messageAdapter;
     String lsessionid = "";
     MessageController messageController = new MessageController();
 
-    @SuppressLint("RestrictedApi")
+    @SuppressLint({"RestrictedApi", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +41,31 @@ public class ChatBotActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        editText = (EditText) findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
         messageAdapter = new MessageAdapter(this);
-        listView = (ListView) findViewById(R.id.messages_view);
+        sendButton = findViewById(R.id.sendButton);
+        listView =  findViewById(R.id.messages_view);
+        editChat = findViewById(R.id.editchat);
         listView.setAdapter(messageAdapter);
 
-        try {
-            messageAdm("hola", false);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(HTTPConnectionManager.isNetworkingOnline(this)){
+            try {
+                messageAdm("hola", false);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } else{
+            editText.setEnabled(false);
+            editText.setInputType(InputType.TYPE_NULL);
+            editText.setText("");
+            sendButton.setClickable(false);
+            sendButton.setEnabled(false);
+            editChat.setBackground(getResources().getDrawable(R.drawable.editchatdis));
+            AssistanceResponse assistanceResponse = new AssistanceResponse("No hay conexion","www.google.com", 3, "0");
+            messageAdapter.add(assistanceResponse);
         }
 
-
-        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = editText.getText().toString();

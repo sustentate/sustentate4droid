@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,7 +68,7 @@ public class DAOTablaEventos extends DatabaseHelper {
     public void insertarLosEventos(List<Evento> eventos) throws ParseException {
         for (Evento evento : eventos){
             if(evento.equals(null) || eventosUni(evento)){
-
+                break;
             }else {
                 insertarDatosEnTabla(evento);
             }
@@ -95,6 +95,12 @@ public class DAOTablaEventos extends DatabaseHelper {
         while(cursor.moveToNext()){
             Evento evento = new Evento();
 
+            if(cursor.getColumnIndex(ID)== -1){
+                cursor.close();
+                database.close();
+                return null;
+            }
+
             id = cursor.getString(cursor.getColumnIndex(ID));
             title = cursor.getString(cursor.getColumnIndex(TITLE));
             description = cursor.getString(cursor.getColumnIndex(DESCRIPTION));
@@ -103,13 +109,19 @@ public class DAOTablaEventos extends DatabaseHelper {
             address = cursor.getString(cursor.getColumnIndex(ADDRESS));
             price = cursor.getString(cursor.getColumnIndex(PRICE));
             promoted = cursor.getString(cursor.getColumnIndex(PROMOTED));
-            type = cursor.getString(cursor.getColumnIndex(TYPE));
+           // type = cursor.getString(cursor.getColumnIndex(TYPE));
             published = cursor.getString(cursor.getColumnIndex(PUBLISHED));
+            Date dater = new Date();
+            if(date.equals("null")){
+                Date date1 = new Date();
+                DateFormat df1 = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
+                date = df1.format(date1);
+            }else{
+                DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
+                dater = (Date) df.parse(date);
+            }
 
-            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
-            Date dater = (Date) df.parse(date);
-
-            evento.set_id(id);
+            evento.setId(id);
             evento.setAddress(address);
             evento.setDescription(description);
             evento.setTitle(title);
@@ -129,16 +141,17 @@ public class DAOTablaEventos extends DatabaseHelper {
         boolean some = false;
 
         List<Evento> eventos = consultaEventos();
+        if(eventos == null){
+            return some;
+        }
 
         for (Evento evento1 : eventos) {
-            if (evento.getId() == evento1.getId()){
+            if (evento.getId().equals(evento1.getId())){
                 some = true;
             }
         }
 
         return some;
     }
-
-
 
 }

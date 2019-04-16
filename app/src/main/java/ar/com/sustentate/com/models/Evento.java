@@ -9,8 +9,8 @@ import java.util.Date;
  */
 
 public class Evento {
-    private String _id;
-    private String _rev;
+    private String id;
+    private String rev;
 
     @NotNull
     private String title;
@@ -57,11 +57,11 @@ public class Evento {
     }
 
     public String getId() {
-        return this._id;
+        return this.id;
     }
 
     public String getRev() {
-        return this._rev;
+        return this.rev;
     }
 
     public boolean getPromoted() {
@@ -104,9 +104,9 @@ public class Evento {
         return price;
     }
 
-    public void set_id(String _id) {this._id = _id;}
+    public void setId(String id) {this.id = id;}
 
-    public void set_rev(String _rev) {this._rev = _rev;}
+    public void setRev(String rev) {this.rev = rev;}
 
     public void setTitle(@NotNull String title) {this.title = title;}
 

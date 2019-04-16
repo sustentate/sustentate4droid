@@ -70,6 +70,9 @@ public class ActivityEvento extends AppCompatActivity {
     }
 
     private String dateToString (Date date){
+        if(date == null){
+            return null;
+        }
 
         String monthString;
         switch (date.getMonth()){
