@@ -56,8 +56,9 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.ViewHold
     public int getItemCount() {
         return eventos.size();
     }
+
     public void cargarNuevaLista(List<Evento> eventos1){
-        eventos.addAll(eventos1);
+        eventos = eventos1;
         notifyDataSetChanged();
     }
 

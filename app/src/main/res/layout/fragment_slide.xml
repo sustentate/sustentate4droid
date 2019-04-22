@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/fragment_bg_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
 
     <View
         android:id="@+id/fragment_bg"
@@ -23,14 +18,19 @@
         android:layout_marginTop="50dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/fragment_title"
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="30sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"/>-->
+
+        <ImageView
+            android:id="@+id/fragment_title"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/fragment_sub_title"
@@ -40,7 +40,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorGrey"
             android:textSize="18sp"/>
     </LinearLayout>
 

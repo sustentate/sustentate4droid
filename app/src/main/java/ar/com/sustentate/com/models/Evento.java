@@ -34,19 +34,22 @@ public class Evento {
     @NotNull
     private Date startDateTime;
 
+    private String urlImage;
+
     //@NotNull
     //private EventType type;
 
     @NotNull
     private Contact contact;
 
-    public Evento(String aTitle, String aDescription, String anAddress, String aLink, Date aDateTime, /*EventType type,*/ Contact aContact, Long price) {
+    public Evento(String aTitle, String aDescription, String anAddress, Date aDateTime, String image, /*EventType type,*/ Contact aContact, Long price) {
         this.title = aTitle;
         this.description = aDescription;
         this.published = false;
         this.promoted = false;
         this.address = anAddress;
-        this.link = aLink;
+        this.urlImage = image;
+        //this.link = aLink;
         this.startDateTime = aDateTime;
         //this.type = type;
         this.contact = aContact;
@@ -62,6 +65,10 @@ public class Evento {
 
     public String getRev() {
         return this.rev;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
     }
 
     public boolean getPromoted() {

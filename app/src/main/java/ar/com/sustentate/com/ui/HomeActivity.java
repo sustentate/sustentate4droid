@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import ar.com.sustentate.com.R;
@@ -66,9 +65,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentTips.Comu
         bundle.putString(ActivityEvento.DESCRIPTION,evento.getDescription());
         bundle.putBoolean(ActivityEvento.PROMOTED,evento.getPromoted());
         bundle.putBoolean(ActivityEvento.PUBLISHED,evento.isPublished());
+        bundle.putString(ActivityEvento.IMAGEURL, evento.getUrlImage());
         //TODO revisar
         //bundle.putString(ActivityEvento.TYPE, String.valueOf(evento.getType()));
-       // bundle.putString(ActivityEvento.PRICE, evento.getPrice().toString());
+        bundle.putString(ActivityEvento.PRICE, evento.getPrice().toString());
         bundle.putString(ActivityEvento.TITLE, evento.getTitle());
         bundle.putString(ActivityEvento.LINK, evento.getLink());
         bundle.putString(ActivityEvento.ID, evento.getId());

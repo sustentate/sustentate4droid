@@ -31,7 +31,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button_how"
+        android:layout_above="@+id/version"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp">
 
@@ -54,26 +54,11 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/button_how"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/round_home_how"
-        android:elevation="5dp"
-        android:gravity="center"
-        android:text="CAMARA"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
+        android:id="@+id/version"
         android:gravity="center"
         android:text="v 0.9"
         android:textColor="@android:color/darker_gray"

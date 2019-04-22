@@ -20,7 +20,8 @@ public class ActivityEvento extends AppCompatActivity {
     public static final String ID = "id";
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
-    public static final String LINK= "url";
+    public static final String LINK= "link";
+    public static final String IMAGEURL= "url";
     public static final String PUBLISHED= "published";
     public static final String PROMOTED= "promoted";
     public static final String DATE = "date";
@@ -46,7 +47,7 @@ public class ActivityEvento extends AppCompatActivity {
         String id = bundle.getString(ID);
         String title = bundle.getString(TITLE);
         String description = bundle.getString(DESCRIPTION);
-        String urlImage = bundle.getString(LINK);
+        String urlImage = bundle.getString(IMAGEURL);
         String place = bundle.getString(ADDRESS);
         String price = bundle.getString(PRICE);
         String type = bundle.getString(TYPE);

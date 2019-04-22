@@ -39,14 +39,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-       /* fragmentView.findViewById(R.id.button_how).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                        KeySaver.removeKey((Activity) fragmentView.getContext(), "sliding");
-                startActivity(new Intent(fragmentView.getContext(), MainActivity.class));
-            }
-        });*/
-
         FloatingActionButton how = (FloatingActionButton) fragmentView.findViewById(R.id.how);
         how.setOnClickListener(new View.OnClickListener() {
             @Override

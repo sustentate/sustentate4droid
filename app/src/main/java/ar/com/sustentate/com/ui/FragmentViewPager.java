@@ -55,15 +55,15 @@ public class FragmentViewPager extends Fragment {
         if (adapterViewPager.getListaFragments().isEmpty()) {
 
             List<Fragment> list = new ArrayList<>();
-            FragmentEvento fragmentEvento = new FragmentEvento();
+            /*FragmentEvento fragmentEvento = new FragmentEvento();
             HomeFragment homeFragment = new HomeFragment();
             FragmentTips fragmentTips = new FragmentTips();
 
             list.add(fragmentEvento);
             list.add(homeFragment);
-            list.add(fragmentTips);
+            list.add(fragmentTips);*/
             FragmentPageAdapter adapterViewPager1 = new FragmentPageAdapter(getFragmentManager(), list);
-            adapterViewPager1.notifyDataSetChanged();
+            //adapterViewPager1.notifyDataSetChanged();
             viewPager.setAdapter(adapterViewPager1);
 
         }

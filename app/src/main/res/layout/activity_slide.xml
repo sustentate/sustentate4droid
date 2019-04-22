@@ -22,7 +22,7 @@
         android:layout_alignParentRight="true"
         android:background="@android:color/transparent"
         android:text="LISTO"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp" />
 
     <Button
@@ -33,7 +33,7 @@
         android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
         android:text="SALTAR"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp" />
 
     <LinearLayout

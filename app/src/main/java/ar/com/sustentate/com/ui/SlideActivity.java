@@ -43,9 +43,9 @@ public class SlideActivity extends AppCompatActivity implements View.OnClickList
         viewPager = findViewById(R.id.view_slide);
 
         List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(SlideFragment.newInstance("SUSTENTATE", "Nuestra aplicación móvil esta pensada para ayudarte a saber si un producto es reciclable o no.", R.color.slide_one, R.drawable.slide_one));
-        fragmentList.add(SlideFragment.newInstance("¿Cómo funciona?", "Sacale una foto al residuo que tengas duda a través de nuestra aplicación móvil.", R.color.slide_two, R.drawable.slide_two));
-        fragmentList.add(SlideFragment.newInstance("¡Ya está!", "La aplicación analiza la imagen con inteligencia artificial de Watson IBM y te indicará en qué cesto depositar el residuo.", R.color.slide_three, R.drawable.slide_three));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Para saber si un residuo es reciclable o no, solo tomale una foto o preguntale a Carla, nuestra asistente virtual.", R.color.colorLigthGrey, R.drawable.slide_one));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Carla tambien prodra ayudarte con cualquier duda que tengas sobre el ambiente y su cuidado.", R.color.colorLigthGrey, R.drawable.slide_two));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Ademas podrás encontrar consejos, eventos y talleres relacionados con el cuidado del medio ambiente en las secciones de Ecotips y Ecoeventos.", R.color.colorLigthGrey, R.drawable.slide_three));
 
         SlideAdapter adapter = new SlideAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(adapter);

@@ -19,7 +19,6 @@ public class FragmentPageAdapter extends FragmentStatePagerAdapter {
     public FragmentPageAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
 
-
         listaFragments = fragments;
 
         FragmentEvento fragmentEvento = new FragmentEvento();
