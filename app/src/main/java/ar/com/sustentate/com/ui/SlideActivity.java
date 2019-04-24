@@ -43,9 +43,9 @@ public class SlideActivity extends AppCompatActivity implements View.OnClickList
         viewPager = findViewById(R.id.view_slide);
 
         List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Para saber si un residuo es reciclable o no, solo tomale una foto o preguntale a Carla, nuestra asistente virtual.", R.color.colorLigthGrey, R.drawable.slide_one));
-        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Carla tambien prodra ayudarte con cualquier duda que tengas sobre el ambiente y su cuidado.", R.color.colorLigthGrey, R.drawable.slide_two));
-        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Ademas podrás encontrar consejos, eventos y talleres relacionados con el cuidado del medio ambiente en las secciones de Ecotips y Ecoeventos.", R.color.colorLigthGrey, R.drawable.slide_three));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Para saber si un residuo es reciclable o no, solo tómale una foto o pregúntale a Carla, nuestra asistente virtual.", R.color.colorLigthGrey, R.drawable.slide_one));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Carla también podrá ayudarte con cualquier duda que tengas sobre el ambiente y su cuidado.", R.color.colorLigthGrey, R.drawable.slide_two));
+        fragmentList.add(SlideFragment.newInstance(R.drawable.slide_title, "Además podrás encontrar consejos, eventos y talleres relacionados con el cuidado del medio ambiente en las secciones de Ecotips y Ecoeventos.", R.color.colorLigthGrey, R.drawable.slide_three));
 
         SlideAdapter adapter = new SlideAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(adapter);

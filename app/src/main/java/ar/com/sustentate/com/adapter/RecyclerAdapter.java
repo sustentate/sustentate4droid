@@ -43,7 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final Tip tip = tips.get(position);
         holder.cargarDatos(tip);
 
-        holder.celda.setOnClickListener(new View.OnClickListener() {
+        holder.celda.setOnClickListener(      new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -83,13 +83,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             if (tip != null && tip.getTitle() != null && tip.getImageUrl() != null && !tip.getTitle().isEmpty() && !tip.getImageUrl().isEmpty()) {
                 title.setText(tip.getTitle());
                 //carga imagen por default si ausente
-                imageUrl.setImageResource(R.drawable.ecotips2);
+                int id = context.getResources().getIdentifier("ecotips" + tip.getImageUrl(),"drawable",context.getPackageName());
+                imageUrl.setImageResource(id);
 
                 //Picasso.with(context).load(tip.getImageUrl()).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageUrl);
             }
             else {
                 title.setText("Unable to reach the article");
-                imageUrl.setImageResource(R.drawable.ecotips2);
+                imageUrl.setImageResource(R.drawable.placeholder );
             }
         }
     }

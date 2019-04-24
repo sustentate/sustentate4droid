@@ -46,7 +46,8 @@ public class DetalleActivity extends AppCompatActivity {
         //Picasso.with(this).load(imageURL).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(imageDetalle);
         textDetalle.setText(text);
         titleDetalle.setText(title);
-        imageDetalle.setImageResource(R.drawable.ecotips2);
+        int idImage = this.getResources().getIdentifier("ecotips" + imageURL,"drawable",this.getPackageName());
+        imageDetalle.setImageResource(idImage);
     }
 
 }
