@@ -10,18 +10,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ar.com.sustentate.com.utils.AspectRelative
+        <ar.com.sustentate.ia.utils.AspectRelative
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/black">
 
-            <ar.com.sustentate.com.utils.CameraView
+            <ar.com.sustentate.ia.utils.CameraView
                 android:id="@+id/camera_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true" />
 
-            <ar.com.sustentate.com.utils.AspectImageView
+            <ar.com.sustentate.ia.utils.AspectImageView
                 android:id="@+id/camera_preview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,7 +50,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-        </ar.com.sustentate.com.utils.AspectRelative>
+        </ar.com.sustentate.ia.utils.AspectRelative>
 
         <RelativeLayout
             android:layout_width="match_parent"
