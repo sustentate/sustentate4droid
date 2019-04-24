@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ar.com.sustentate.com.ui.FragmentTips"
+    tools:context="ar.com.sustentate.ia.ui.FragmentTips"
     android:background="@color/colorLigthGrey"
     android:paddingBottom="50dp">
 
