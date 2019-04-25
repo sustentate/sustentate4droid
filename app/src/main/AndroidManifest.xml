@@ -25,6 +25,7 @@
     <uses-sdk
         android:targetSdkVersion="28"
         android:maxSdkVersion="28"
+        android:minSdkVersion="18"
         tools:ignore="GradleOverrides" />
 
 
