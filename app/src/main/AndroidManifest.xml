@@ -16,17 +16,13 @@
                         android:smallScreens="true"
                         android:normalScreens="true"
                         android:largeScreens="true"
-                        android:xlargeScreens="false"
-                        android:anyDensity="false"
-                        android:requiresSmallestWidthDp="300"
-                        android:compatibleWidthLimitDp="320"
-                        android:largestWidthLimitDp="480"/>
+                        android:xlargeScreens="true"
+                        android:anyDensity="true"/>
 
     <uses-sdk
         android:targetSdkVersion="28"
         android:maxSdkVersion="28"
-        android:minSdkVersion="18"
-        tools:ignore="GradleOverrides" />
+        android:minSdkVersion="18"/>
 
 
     <application
