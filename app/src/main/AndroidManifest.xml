@@ -12,6 +12,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
+    <supports-screens   android:resizeable="true"
+                        android:smallScreens="true"
+                        android:normalScreens="true"
+                        android:largeScreens="true"
+                        android:xlargeScreens="false"
+                        android:anyDensity="false"
+                        android:requiresSmallestWidthDp="300"
+                        android:compatibleWidthLimitDp="320"
+                        android:largestWidthLimitDp="480"/>
+
     <uses-sdk
         android:targetSdkVersion="28"
         android:maxSdkVersion="28"
