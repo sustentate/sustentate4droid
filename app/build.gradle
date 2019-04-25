@@ -6,10 +6,10 @@ android {
         applicationId "ar.com.sustentate.ia"
         targetSdkVersion 28
         minSdkVersion 28
-        versionName "0.9.24"
+        versionName "0.9.25"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "server", "http://localhost:8080"
-        versionCode 109
+        versionCode 110
     }
     buildTypes {
         release {
